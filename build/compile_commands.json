@@ -16,6 +16,11 @@
 },
 {
   "directory": "/home/od/e01/build",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/dynamic_arrays.c.o -c /home/od/e01/src/dynamic_arrays.c",
+  "file": "/home/od/e01/src/dynamic_arrays.c"
+},
+{
+  "directory": "/home/od/e01/build",
   "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/renderer.c.o -c /home/od/e01/src/renderer.c",
   "file": "/home/od/e01/src/renderer.c"
 }

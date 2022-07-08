@@ -9,6 +9,7 @@ add_executable(
         src/main.c
         src/glad.c
         src/common.c
+        src/dynamic_arrays.c
         src/renderer.c
 )
 target_link_libraries(e01 glfw GL X11 pthread Xrandr Xi dl)

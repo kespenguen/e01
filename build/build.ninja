@@ -235,6 +235,12 @@ build CMakeFiles/e01.dir/src/common.c.o: C_COMPILER__e01_Debug /home/od/e01/src/
   OBJECT_DIR = CMakeFiles/e01.dir
   OBJECT_FILE_DIR = CMakeFiles/e01.dir/src
 
+build CMakeFiles/e01.dir/src/dynamic_arrays.c.o: C_COMPILER__e01_Debug /home/od/e01/src/dynamic_arrays.c || cmake_object_order_depends_target_e01
+  DEP_FILE = CMakeFiles/e01.dir/src/dynamic_arrays.c.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/e01.dir
+  OBJECT_FILE_DIR = CMakeFiles/e01.dir/src
+
 build CMakeFiles/e01.dir/src/renderer.c.o: C_COMPILER__e01_Debug /home/od/e01/src/renderer.c || cmake_object_order_depends_target_e01
   DEP_FILE = CMakeFiles/e01.dir/src/renderer.c.o.d
   FLAGS = -g
@@ -249,7 +255,7 @@ build CMakeFiles/e01.dir/src/renderer.c.o: C_COMPILER__e01_Debug /home/od/e01/sr
 #############################################
 # Link the executable e01
 
-build e01: C_EXECUTABLE_LINKER__e01_Debug CMakeFiles/e01.dir/src/main.c.o CMakeFiles/e01.dir/src/glad.c.o CMakeFiles/e01.dir/src/common.c.o CMakeFiles/e01.dir/src/renderer.c.o
+build e01: C_EXECUTABLE_LINKER__e01_Debug CMakeFiles/e01.dir/src/main.c.o CMakeFiles/e01.dir/src/glad.c.o CMakeFiles/e01.dir/src/common.c.o CMakeFiles/e01.dir/src/dynamic_arrays.c.o CMakeFiles/e01.dir/src/renderer.c.o
   FLAGS = -g
   LINK_FLAGS = -rdynamic
   LINK_LIBRARIES = -lglfw  -lGL  -lX11  -lpthread  -lXrandr  -lXi  -ldl

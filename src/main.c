@@ -1,8 +1,8 @@
 #include "common.h"
  
 
-int main()
-{
+int main(){
+    
     /********************/
     /*    INIT_GLFW     */
     /********************/
@@ -35,14 +35,33 @@ int main()
 
     glfwSetFramebufferSizeCallback(_window, framebuffer_size_callback);
 
-    float vertices[] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
-    };  
-    renderer_PushVertexBuffer(vertices,sizeof(vertices));
+
     
-    renderer_CompileShader("gg");
+
+    float vertices[] = {
+         0.5f,  0.5f, 0.0f,  // top right
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f   // top left 
+    };
+    unsigned int indices[] = {  // note that we start from 0!
+        0, 1, 3,   // first triangle
+        1, 2, 3    // second triangle
+    };  
+
+printf("sizeof: %d\n",sizeof(vertices));  
+
+    floatArray vert;
+    set_floatArray(&vert,sizeof(vertices),vertices);
+
+
+    uIntArray shaderPrograms;
+    set_uIntArray(&shaderPrograms,1);
+
+    unsigned int x = renderer_CompileShader("gg");
+    push_uIntArray(&shaderPrograms, x);
+    
+    renderer_PushGeometry(&vert, sizeof(vertices), indices, sizeof(indices),x);
 
     /********************/
     /*    MAIN_LOOP     */
@@ -62,6 +81,9 @@ int main()
     /*    EXIT_PROG     */
     /********************/
 
+    free_uIntArray(&shaderPrograms);
+    //renderer_CleanUP();
+    glfwTerminate();
     return 0;
 }
 

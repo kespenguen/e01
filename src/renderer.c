@@ -1,7 +1,11 @@
 #include "renderer.h"
+#include "common.h"
 #include "shaders.h"
 
-void renderer_CompileShader(char *shaderSource){
+drawEntitiy n;
+
+
+unsigned int renderer_CompileShader(char *shaderSource){
 /*VERTEX SHADER*/
     unsigned int vertexShader;
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -35,43 +39,66 @@ void renderer_CompileShader(char *shaderSource){
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
+
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     
-    glUseProgram(shaderProgram);
+    if(!success) {
+        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+        printf("ERROR::SHADER::PROGRAM::COMPILATION_FAILED\n %s", infoLog);
+    }
+    
+    //glUseProgram(shaderProgram);
     
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+
+    return shaderProgram;
+}
+
+void renderer_UseShaderProgram(unsigned int program){
+    glUseProgram(program);
+}
+
+
+void renderer_PushGeometry(floatArray *vert, size_t vert_size, unsigned int *ind, size_t ind_size, unsigned int shaderProgram){
+    unsigned int VBO, VAO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+    glBindVertexArray(VAO);
+
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vert->array), vert->array, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind_size, ind, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+
+
+    n.EBO = EBO;
+    n.VAO = VAO;
+    n.VBO = VBO;
+    n.PRG = shaderProgram;
+    n.IND = ind_size;
 }
 
 void renderer_RenderScene(){
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);  
+    glUseProgram(n.PRG);
+    glBindVertexArray(n.VAO);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+    glBindVertexArray(0);
 }
 
 void renderer_ClearBackBuffer(){
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-}
-
-void renderer_PushVertexBuffer(float *vert,int size){
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);  
-    
-    unsigned int VBO;
-
-    glGenBuffers(1,&VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);  
-
-/*
-    GL_STREAM_DRAW: the data is set only once and used by the GPU at most a few times.
-    GL_STATIC_DRAW: the data is set only once and used many times.
-    GL_DYNAMIC_DRAW: the data is changed a lot and used many times.
-*/
-    glBufferData(GL_ARRAY_BUFFER, size, vert, GL_STATIC_DRAW);
-
-    unsigned int vertexShader;
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-glBindVertexArray(VAO);
 }
