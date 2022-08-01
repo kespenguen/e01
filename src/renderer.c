@@ -60,7 +60,11 @@ void renderer_UseShaderProgram(unsigned int program){
 }
 
 
-void renderer_PushGeometry(floatArray *vert, size_t vert_size, unsigned int *ind, size_t ind_size, unsigned int shaderProgram){
+void renderer_PushGeometry(floatArray *vert,uIntArray *ind, unsigned int shaderProgram){
+
+
+
+
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
@@ -70,10 +74,10 @@ void renderer_PushGeometry(floatArray *vert, size_t vert_size, unsigned int *ind
 
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vert->array), vert->array, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vert->size, vert->array, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind_size, ind, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind->size, ind->array, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
@@ -86,7 +90,7 @@ void renderer_PushGeometry(floatArray *vert, size_t vert_size, unsigned int *ind
     n.VAO = VAO;
     n.VBO = VBO;
     n.PRG = shaderProgram;
-    n.IND = ind_size;
+    n.IND = ind->size;
 }
 
 void renderer_RenderScene(){

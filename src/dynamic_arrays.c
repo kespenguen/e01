@@ -3,24 +3,12 @@
 #include <string.h>
 
 /************DYNAMIC FLOAT ARRAY**************/
-void set_floatArray(floatArray *a, size_t s, float *e){
-    if(e == NULL){
-        a->array = malloc(s * sizeof(float));
-        a->used = 0;
-        a->size = s;
-
-        for(int i = 0; i < a->size;++i){
-            a->array[i] = 0.0;
-        }
-    }else {
-        //a->array = malloc(s * sizeof(float));
-        
-        memcpy(a->array, e, s);
-            
-        a->used = ((s) / sizeof(float));
-        a->size = a->used;
-
-        printf("size: %d\n", a->size);
+void set_floatArray(floatArray *a, size_t s){
+    a->array = malloc(s * sizeof(float));
+    a->used = 0;
+    a->size = s;
+    for(int i = 0; i < a->size;++i){
+        a->array[i] = 0.0;
     }
 }
 void push_floatArray(floatArray *a, float e){
@@ -30,6 +18,15 @@ void push_floatArray(floatArray *a, float e){
       a->array = realloc(a->array, a->size * sizeof(float));
     }
     a->array[a->used++] = e;
+}
+void copy_floatArray(floatArray *a, const void *d, size_t s){
+
+    a->array = malloc(s);
+
+    memcpy(a->array,(float*)d,s);
+
+    a->used = s / sizeof(float);
+    a->size = s;
 }
 void free_floatArray(floatArray *a){
     
@@ -56,6 +53,15 @@ void push_intArray(intArray *a, int e){
     }
     a->array[a->used++] = e;
 }
+void copy_intArray(intArray *a, const void *d, size_t s){
+
+    a->array = malloc(s);
+
+    memcpy(a->array,(int*)d,s);
+
+    a->used = s / sizeof(int);
+    a->size = s;
+}
 void free_intArray(intArray *a){
     
     free(a->array);
@@ -80,6 +86,15 @@ void push_uIntArray(uIntArray *a, unsigned int e){
       a->array = realloc(a->array, a->size * sizeof(unsigned int));
     }
     a->array[a->used++] = e;
+}
+void copy_uIntArray(uIntArray *a, const void *d, size_t s){
+
+    a->array = malloc(s);
+
+    memcpy(a->array,(unsigned int*)d,s);
+
+    a->used = s / sizeof(unsigned int);
+    a->size = s;
 }
 void free_uIntArray(uIntArray *a){
     

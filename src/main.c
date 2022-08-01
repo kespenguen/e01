@@ -1,5 +1,5 @@
 #include "common.h"
- 
+#include <string.h>
 
 int main(){
     
@@ -39,29 +39,32 @@ int main(){
     
 
     float vertices[] = {
-         0.5f,  0.5f, 0.0f,  // top right
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
+         0.5,  0.5, 0.0,  // top right
+         0.5, -0.5, 0.0,  // bottom right
+        -0.5, -0.5, 0.0,  // bottom left
+        -0.5,  0.5, 0.0   // top left 
     };
+
     unsigned int indices[] = {  // note that we start from 0!
         0, 1, 3,   // first triangle
         1, 2, 3    // second triangle
     };  
-
-printf("sizeof: %d\n",sizeof(vertices));  
-
+    
     floatArray vert;
-    set_floatArray(&vert,sizeof(vertices),vertices);
+    set_floatArray(&vert,12);
+    copy_floatArray(&vert,vertices,sizeof(vertices));
 
+    uIntArray ind;
+    set_uIntArray(&ind,6);
+    copy_uIntArray(&ind,indices,sizeof(indices));
 
     uIntArray shaderPrograms;
     set_uIntArray(&shaderPrograms,1);
-
     unsigned int x = renderer_CompileShader("gg");
     push_uIntArray(&shaderPrograms, x);
     
-    renderer_PushGeometry(&vert, sizeof(vertices), indices, sizeof(indices),x);
+    renderer_PushGeometry(&vert, &ind, x);
+    free_floatArray(&vert);
 
     /********************/
     /*    MAIN_LOOP     */

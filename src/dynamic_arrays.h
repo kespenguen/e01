@@ -11,7 +11,8 @@ typedef struct{
     size_t size;
 }floatArray;
 
-void set_floatArray(floatArray *a, size_t s, float *e);
+void set_floatArray(floatArray *a, size_t s);
+void copy_floatArray(floatArray *a, const void *d, size_t s);
 void push_floatArray(floatArray *a, float e);
 void free_floatArray(floatArray *a);
 /**************DYNAMIC INT ARRAY**************/
@@ -22,6 +23,7 @@ typedef struct{
 }intArray;
 
 void set_intArray(intArray *a, size_t s);
+void copy_intArray(intArray *a, const void *d, size_t s);
 void push_intArray(intArray *a, int e);
 void free_intArray(intArray *a);
 /*********DYNAMIC UNSIGNED INT ARRAY**********/
@@ -32,6 +34,7 @@ typedef struct {
 }uIntArray;
 
 void set_uIntArray(uIntArray *a, size_t s);
+void copy_uIntArray(uIntArray *a, const void *d, size_t s);
 void push_uIntArray(uIntArray *a, unsigned int e);
 void free_uIntArray(uIntArray *a);
 
