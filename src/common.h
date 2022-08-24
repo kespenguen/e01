@@ -5,12 +5,12 @@
 #include <GLFW/glfw3.h>
 
 #include "renderer.h"
+#include "io.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);  
-
 
 void handle_input(GLFWwindow *window);
 

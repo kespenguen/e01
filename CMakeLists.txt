@@ -11,6 +11,8 @@ add_executable(
         src/common.c
         src/dynamic_arrays.c
         src/renderer.c
+        src/io.c
+        src/shader.c
 )
 target_link_libraries(e01 glfw GL X11 pthread Xrandr Xi dl)
 

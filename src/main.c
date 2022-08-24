@@ -49,7 +49,7 @@ int main(){
         0, 1, 3,   // first triangle
         1, 2, 3    // second triangle
     };  
-    
+
     floatArray vert;
     set_floatArray(&vert,12);
     copy_floatArray(&vert,vertices,sizeof(vertices));
@@ -60,7 +60,8 @@ int main(){
 
     uIntArray shaderPrograms;
     set_uIntArray(&shaderPrograms,1);
-    unsigned int x = renderer_CompileShader("gg");
+
+    unsigned int x = renderer_CompileShader("/home/od/e01/res/vertex_shader");
     push_uIntArray(&shaderPrograms, x);
     
     renderer_PushGeometry(&vert, &ind, x);

@@ -1,16 +1,23 @@
 #include "renderer.h"
 #include "common.h"
-#include "shaders.h"
+#include "shader.h"
 
 drawEntitiy n;
 
-
 unsigned int renderer_CompileShader(char *shaderSource){
 /*VERTEX SHADER*/
+    
+    //Load shader from file
+    char *tmp = io_read(shaderSource);//(const char**)&tmp
+
+    struct shaderSource source = shader_seperate(tmp);
+    free(tmp);
+    
+
     unsigned int vertexShader;
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+    glShaderSource(vertexShader, 1, (const char**)&source.vs , NULL);
     glCompileShader(vertexShader);
 
     int  success;
@@ -23,7 +30,7 @@ unsigned int renderer_CompileShader(char *shaderSource){
 /*FRAGMENT SHADER*/
     unsigned int fragmentShader;
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+    glShaderSource(fragmentShader, 1, (const char**)&source.fs, NULL);
     glCompileShader(fragmentShader);
 
     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);

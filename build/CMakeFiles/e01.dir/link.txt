@@ -1,0 +1,1 @@
+/usr/bin/gcc -g -rdynamic CMakeFiles/e01.dir/src/main.c.o CMakeFiles/e01.dir/src/glad.c.o CMakeFiles/e01.dir/src/common.c.o CMakeFiles/e01.dir/src/dynamic_arrays.c.o CMakeFiles/e01.dir/src/renderer.c.o CMakeFiles/e01.dir/src/io.c.o CMakeFiles/e01.dir/src/shader.c.o -o e01  -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl 
