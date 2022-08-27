@@ -1,5 +1,6 @@
 #include "common.h"
 #include <string.h>
+#include <math.h>
 
 int main(){
     
@@ -72,6 +73,9 @@ int main(){
     /********************/
     while(!glfwWindowShouldClose(_window)){
         handle_input(_window);
+        float time = glfwGetTime();
+        float greenValue = (sin(time) / 2.0f) + 0.5f;
+        renderer_SetUniform(x,"ourColor", greenValue);
 
         renderer_ClearBackBuffer();
 

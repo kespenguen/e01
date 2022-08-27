@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug  1 17:07:35 2022
+# Make data base, printed on Sat Aug 27 20:03:54 2022
 
 # Variables
 
@@ -19,15 +19,27 @@ LC_ALL = C
 # environment
 NO_AT_BRIDGE = 1
 # environment
-I3SOCK = /run/user/1000/i3/ipc-socket.698
+I3SOCK = /run/user/1000/i3/ipc-socket.656
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-985723b0-11cf-4aef-a180-96018f95dbb6.sock
+CSF_EXCEPTION_PROMPT = 1
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-25f0215b-4f8a-49be-affb-a1654ef2a14c.sock
+# environment
+CSF_XmlOcafResource = /usr/share/opencascade/resources/XmlOcafResource
 # environment
 LC_NAME = tr_TR.UTF-8
 # environment
 LC_NUMERIC = tr_TR.UTF-8
 # environment
 VSCODE_CWD = /home/od
+# environment
+MMGT_CLEAR = 1
+# environment
+CSF_XCAFDefaults = /usr/share/opencascade/resources/StdResource
+# environment
+CSF_PluginDefaults = /usr/share/opencascade/resources/StdResource
+# environment
+CASROOT = /usr
 # environment
 LC_ADDRESS = tr_TR.UTF-8
 # default
@@ -55,6 +67,8 @@ VSCODE_CODE_CACHE_PATH = /home/od/.config/Code/CachedData/c3511e6c69bb39013c4a4b
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
+CSF_ShadersDirectory = /usr/share/opencascade/resources/Shaders
+# environment
 LANG = C
 # environment
 XAUTHORITY = /home/od/.Xauthority
@@ -69,13 +83,15 @@ CURDIR := /home/od/e01
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
 MFLAGS = -pqrR
 # default
 .SHELLFLAGS := -c
+# environment
+CSF_MDTVTexturesDirectory = /usr/share/opencascade/resources/Textures
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # environment
@@ -87,17 +103,23 @@ MAKEFILE_LIST :=
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 1152
+VSCODE_PID = 1626
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
+# environment
+CSF_XSMessage = /usr/share/opencascade/resources/XSMessage
+# environment
+DRAWDEFAULT = /usr/share/opencascade/resources/DrawResources/DrawDefault
 # automatic
 *F = $(notdir $*)
 # environment
 QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
+# environment
+CSF_SHMessage = /usr/share/opencascade/resources/SHMessage
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
@@ -113,6 +135,8 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # environment
+CSF_TObjDefaults = /usr/share/opencascade/resources/StdResource
+# environment
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
@@ -123,6 +147,8 @@ MAKEFILES :=
 # environment
 LC_MONETARY = tr_TR.UTF-8
 # environment
+CSF_OCCTResourcePath = /usr/share/opencascade/resources
+# environment
 MOTD_SHOWN = pam
 # automatic
 ^F = $(notdir $^)
@@ -131,6 +157,10 @@ LC_TIME = tr_TR.UTF-8
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
+CSF_StandardLiteDefaults = /usr/share/opencascade/resources/StdResource
+# environment
+CSF_STEPDefaults = /usr/share/opencascade/resources/XSTEPResource
+# environment
 LC_TELEPHONE = tr_TR.UTF-8
 # automatic
 ?F = $(notdir $?)
@@ -138,6 +168,8 @@ LC_TELEPHONE = tr_TR.UTF-8
 XDG_SEAT = seat0
 # environment
 XDG_CURRENT_DESKTOP = i3
+# environment
+CSF_MIGRATION_TYPES = /usr/share/opencascade/resources/StdResource/MigrationSheet.txt
 # automatic
 +F = $(notdir $+)
 # environment
@@ -153,9 +185,13 @@ BROWSER = /usr/bin/palemoon
 # environment
 LOGNAME = od
 # environment
+CSF_LANGUAGE = us
+# environment
 XDG_VTNR = 7
 # makefile
 .DEFAULT_GOAL := 
+# environment
+CSF_TObjMessage = /usr/share/opencascade/resources/TObj
 # environment
 EDITOR = /usr/bin/nano
 # environment
@@ -175,6 +211,10 @@ LC_PAPER = tr_TR.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
+CSF_DrawPluginDefaults = /usr/share/opencascade/resources/DrawResources
+# environment
+CSF_IGESDefaults = /usr/share/opencascade/resources/XSTEPResource
+# environment
 XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -184,6 +224,8 @@ GTK2_RC_FILES = /home/od/.gtkrc-2.0
 HOME = /home/od
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# environment
+DRAWHOME = /usr/share/opencascade/resources/DrawResources
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-e14f1ade-1.67.2-main.sock
 # environment
@@ -200,6 +242,8 @@ VSCODE_CLI = 1
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/od
+# environment
+CSF_StandardDefaults = /usr/share/opencascade/resources/StdResource
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink guile load
 # environment
@@ -207,7 +251,7 @@ GDMSESSION = i3
 # environment
 LC_IDENTIFICATION = tr_TR.UTF-8
 # variable set hash-table stats:
-# Load=97/1024=9%, Rehash=0, Collisions=5/124=4%
+# Load=119/1024=12%, Rehash=0, Collisions=9/146=6%
 
 # Pattern-specific Variable Values
 
@@ -257,6 +301,7 @@ GNUmakefile:
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
+ 
 #  Failed to be updated.
 
 # files hash-table stats:
@@ -267,12 +312,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 137 B / avg = 8 B
-# current buf: size = 8162 B / used = 137 B / count = 16 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 132 B / avg = 8 B
+# current buf: size = 8162 B / used = 132 B / count = 16 / avg = 8 B
 
 # strcache performance: lookups = 19 / hit rate = 15%
 # hash-table stats:
 # Load=16/8192=0%, Rehash=0, Collisions=0/19=0%
-# Finished Make data base on Mon Aug  1 17:07:35 2022
+# Finished Make data base on Sat Aug 27 20:03:54 2022
 
  

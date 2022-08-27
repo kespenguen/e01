@@ -105,6 +105,11 @@
 				"backtrace" : 2,
 				"fragment" : "-ldl",
 				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lm",
+				"role" : "libraries"
 			}
 		],
 		"language" : "C"

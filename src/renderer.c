@@ -4,6 +4,13 @@
 
 drawEntitiy n;
 
+void renderer_SetUniform(unsigned int program, const char *name,float value){
+    
+    int vertexColorLocation = glGetUniformLocation(program, "ourColor");
+    glUseProgram(program);
+    glUniform4f(vertexColorLocation, 0.0f, value, 0.0f, 1.0f);
+}
+
 unsigned int renderer_CompileShader(char *shaderSource){
 /*VERTEX SHADER*/
     
@@ -12,7 +19,6 @@ unsigned int renderer_CompileShader(char *shaderSource){
 
     struct shaderSource source = shader_seperate(tmp);
     free(tmp);
-    
 
     unsigned int vertexShader;
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -68,8 +74,6 @@ void renderer_UseShaderProgram(unsigned int program){
 
 
 void renderer_PushGeometry(floatArray *vert,uIntArray *ind, unsigned int shaderProgram){
-
-
 
 
     unsigned int VBO, VAO, EBO;

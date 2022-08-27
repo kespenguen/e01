@@ -8,7 +8,6 @@ struct shaderSource shader_seperate(char *source){
 
     int v_begin,f_begin,g_begin;
 
-    //char *tmp = strtok(source,"__VERTEX__");
     size_t s = strlen(source);
     
     char *vsB = strstr(source,"__VERTEX__");
@@ -46,7 +45,7 @@ struct shaderSource shader_seperate(char *source){
 
             fsIndex += strlen("__FRAGMENT__");  
             rVAL.fs = malloc(fsLenght * sizeof(char));    
-            fsLenght -=  strlen("__FRAGMENT__")+1;//stupid
+            fsLenght -=  strlen("__FRAGMENT__")+2;// double stupid
         
         memcpy(rVAL.fs,source+fsIndex,fsLenght * sizeof(char));
         rVAL.fs[fsLenght] = '\0';
