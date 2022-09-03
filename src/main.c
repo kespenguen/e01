@@ -16,7 +16,7 @@ int main(){
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); MacOS shit
   
-    GLFWwindow* _window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* _window = glfwCreateWindow(800, 600, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
     if (_window == NULL){
         printf("Failed to create GLFW window");
         glfwTerminate();
@@ -38,12 +38,12 @@ int main(){
 
 
     
-
     float vertices[] = {
-         0.5,  0.5, 0.0,  // top right
-         0.5, -0.5, 0.0,  // bottom right
-        -0.5, -0.5, 0.0,  // bottom left
-        -0.5,  0.5, 0.0   // top left 
+        // positions          // colors           // texture coords
+         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
+         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
     };
 
     unsigned int indices[] = {  // note that we start from 0!
@@ -52,7 +52,7 @@ int main(){
     };  
 
     floatArray vert;
-    set_floatArray(&vert,12);
+    set_floatArray(&vert,32);
     copy_floatArray(&vert,vertices,sizeof(vertices));
 
     uIntArray ind;
@@ -64,6 +64,8 @@ int main(){
 
     unsigned int x = renderer_CompileShader("/home/od/e01/res/vertex_shader");
     push_uIntArray(&shaderPrograms, x);
+
+    unsigned int lol = renderer_GenerateTexture("/home/od/e01/res/textures/base3.tga");
     
     renderer_PushGeometry(&vert, &ind, x);
     free_floatArray(&vert);
@@ -73,9 +75,9 @@ int main(){
     /********************/
     while(!glfwWindowShouldClose(_window)){
         handle_input(_window);
-        float time = glfwGetTime();
-        float greenValue = (sin(time) / 2.0f) + 0.5f;
-        renderer_SetUniform(x,"ourColor", greenValue);
+        //float time = glfwGetTime();
+        //float greenValue = (sin(time) / 2.0f) + 0.5f;
+        //renderer_SetUniform(x,"ourColor", greenValue);
 
         renderer_ClearBackBuffer();
 

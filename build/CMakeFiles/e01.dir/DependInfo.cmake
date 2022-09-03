@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/od/e01/src/main.c" "CMakeFiles/e01.dir/src/main.c.o" "gcc" "CMakeFiles/e01.dir/src/main.c.o.d"
   "/home/od/e01/src/renderer.c" "CMakeFiles/e01.dir/src/renderer.c.o" "gcc" "CMakeFiles/e01.dir/src/renderer.c.o.d"
   "/home/od/e01/src/shader.c" "CMakeFiles/e01.dir/src/shader.c.o" "gcc" "CMakeFiles/e01.dir/src/shader.c.o.d"
+  "/home/od/e01/src/texture.c" "CMakeFiles/e01.dir/src/texture.c.o" "gcc" "CMakeFiles/e01.dir/src/texture.c.o.d"
   )
 
 # Targets to which this target links.

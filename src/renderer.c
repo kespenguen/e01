@@ -11,7 +11,51 @@ void renderer_SetUniform(unsigned int program, const char *name,float value){
     glUniform4f(vertexColorLocation, 0.0f, value, 0.0f, 1.0f);
 }
 
+unsigned int renderer_GenerateTexture(const char *__texturepath){
+    size_t *textureLenght;
+
+    unsigned char *textureSource = io_readBinary(__texturepath,&textureLenght);
+    unsigned char *data = texture_parseTGA(textureSource,*textureLenght);
+    if(data != NULL)
+        {printf("success!\n");}
+
+
+    size_t width  =    (textureSource[13]<<8) | textureSource[12];
+    size_t height =    (textureSource[15]<<8) | textureSource[14];
+
+
+    //PAREMETERS
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);//WRAPING
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);//WRAPING
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);//FILTERING
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //FILTERING
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); //MIPMAPING
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);               //MIPMAPING
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    //GEN TEXTURE
+
+
+
+    unsigned int texture;
+    glGenTextures(1, &texture); 
+    glBindTexture(GL_TEXTURE_2D,texture);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    //CLEAN SHIT
+    free(data);
+    free(textureSource);
+
+    n.texture = texture;
+    return texture;
+}
+
 unsigned int renderer_CompileShader(char *shaderSource){
+
 /*VERTEX SHADER*/
     
     //Load shader from file
@@ -90,8 +134,15 @@ void renderer_PushGeometry(floatArray *vert,uIntArray *ind, unsigned int shaderP
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind->size, ind->array, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+   // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    // color attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+    // texture coord attribute
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -106,6 +157,7 @@ void renderer_PushGeometry(floatArray *vert,uIntArray *ind, unsigned int shaderP
 
 void renderer_RenderScene(){
     glUseProgram(n.PRG);
+    glBindTexture(GL_TEXTURE_2D, n.texture);
     glBindVertexArray(n.VAO);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -114,6 +166,6 @@ void renderer_RenderScene(){
 }
 
 void renderer_ClearBackBuffer(){
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }

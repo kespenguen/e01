@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/e01.dir/src/renderer.c.o.d"
   "CMakeFiles/e01.dir/src/shader.c.o"
   "CMakeFiles/e01.dir/src/shader.c.o.d"
+  "CMakeFiles/e01.dir/src/texture.c.o"
+  "CMakeFiles/e01.dir/src/texture.c.o.d"
   "e01"
   "e01.pdb"
 )
