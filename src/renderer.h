@@ -10,13 +10,14 @@ typedef struct {
     unsigned int EBO;
     unsigned int IND;
     unsigned int PRG;
-    unsigned int texture;
+    unsigned int TXT;
 }drawEntitiy;
 
 
 void renderer_ClearBackBuffer();
 
-void renderer_PushGeometry(floatArray *vert, uIntArray *ind,unsigned int shaderProgram);
+void renderer_PushGeometry(floatArray *__verticies, uIntArray *__indicies,
+                            unsigned int __shader, unsigned int __texture);
 
 unsigned int renderer_CompileShader(char *shaderSource);
 

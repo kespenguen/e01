@@ -59,15 +59,17 @@ int main(){
     set_uIntArray(&ind,6);
     copy_uIntArray(&ind,indices,sizeof(indices));
 
-    uIntArray shaderPrograms;
+    uIntArray shaderPrograms;//SHADER LIST
     set_uIntArray(&shaderPrograms,1);
-
     unsigned int x = renderer_CompileShader("/home/od/e01/res/vertex_shader");
     push_uIntArray(&shaderPrograms, x);
 
+    uIntArray textures;//TEXTURE LIST
+    set_uIntArray(&textures,1);
     unsigned int lol = renderer_GenerateTexture("/home/od/e01/res/textures/base3.tga");
-    
-    renderer_PushGeometry(&vert, &ind, x);
+    push_uIntArray(&textures,lol);
+
+    renderer_PushGeometry(&vert, &ind, x, lol);
     free_floatArray(&vert);
 
     /********************/
@@ -87,11 +89,14 @@ int main(){
         glfwPollEvents();    
     }
     
+
     /********************/
     /*    EXIT_PROG     */
     /********************/
 
     free_uIntArray(&shaderPrograms);
+    free_uIntArray(&textures);
+    
     //renderer_CleanUP();
     glfwTerminate();
     return 0;
