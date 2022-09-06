@@ -102,3 +102,36 @@ void free_uIntArray(uIntArray *a){
     a->array = NULL;
     a->used = a->size = 0;
 }
+/************DYNAMIC DRAW ARRAY**************/
+void set_drawArray(drawArray *a, size_t s){
+    a->array = malloc(s * sizeof(drawArray));
+    a->used = 0;
+    a->size = s;
+    for(int i = 0; i < a->size;++i){
+        drawArray x;
+        a->array[i] = x;
+    }
+}
+void push_drawArray(drawArray *a, float e){
+
+    if (a->used == a->size) {
+      a->size *= 2;
+      a->array = realloc(a->array, a->size * sizeof(float));
+    }
+    a->array[a->used++] = e;
+}
+void copy_drawArray(drawArray *a, const void *d, size_t s){
+
+    a->array = malloc(s);
+
+    memcpy(a->array,(float*)d,s);
+
+    a->used = s / sizeof(float);
+    a->size = s;
+}
+void free_drawArray(drawArray *a){
+    
+    free(a->array);
+    a->array = NULL;
+    a->used = a->size = 0;
+}

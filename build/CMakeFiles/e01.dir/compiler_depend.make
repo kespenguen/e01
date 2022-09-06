@@ -83,6 +83,7 @@ CMakeFiles/e01.dir/src/main.c.o: ../src/main.c \
   /usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/include/stddef.h \
   ../src/renderer.h \
   ../src/dynamic_arrays.h \
+  ../src/definitions.h \
   /usr/include/stdlib.h \
   /usr/include/bits/waitflags.h \
   /usr/include/bits/waitstatus.h \
@@ -140,6 +141,7 @@ CMakeFiles/e01.dir/src/renderer.c.o: ../src/renderer.c \
   /usr/include/stdc-predef.h \
   ../src/renderer.h \
   ../src/dynamic_arrays.h \
+  ../src/definitions.h \
   /usr/include/stdlib.h \
   /usr/include/bits/libc-header-start.h \
   /usr/include/features.h \
@@ -342,6 +344,8 @@ CMakeFiles/e01.dir/src/texture.c.o: ../src/texture.c \
 /usr/include/bits/types/locale_t.h:
 
 ../src/texture.h:
+
+../src/definitions.h:
 
 /usr/include/bits/wchar.h:
 

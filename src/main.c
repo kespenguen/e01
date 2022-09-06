@@ -97,7 +97,7 @@ int main(){
     free_uIntArray(&shaderPrograms);
     free_uIntArray(&textures);
     
-    //renderer_CleanUP();
+    renderer_CleanUP();
     glfwTerminate();
     return 0;
 }

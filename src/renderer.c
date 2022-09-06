@@ -165,3 +165,11 @@ void renderer_ClearBackBuffer(){
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
+
+void renderer_CleanUP(){
+    glDeleteTextures(1, &n.TXT);
+
+    glDeleteVertexArrays(1, &n.VAO);
+    glDeleteBuffers(1, &n.VBO);
+    glDeleteBuffers(1, &n.EBO);
+}

@@ -13,16 +13,16 @@ CMakeFiles/e01.dir/src/main.c.o: /home/od/e01/src/main.c \
  /usr/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1/include/stddef.h \
  /home/od/e01/src/renderer.h /home/od/e01/src/dynamic_arrays.h \
- /usr/include/stdlib.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/bits/floatn.h \
- /usr/include/bits/floatn-common.h /usr/include/sys/types.h \
- /usr/include/bits/types/clock_t.h /usr/include/bits/types/clockid_t.h \
- /usr/include/bits/types/time_t.h /usr/include/bits/types/timer_t.h \
- /usr/include/endian.h /usr/include/bits/endian.h \
- /usr/include/bits/endianness.h /usr/include/bits/byteswap.h \
- /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
- /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
- /usr/include/bits/types/__sigset_t.h \
+ /home/od/e01/src/definitions.h /usr/include/stdlib.h \
+ /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+ /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
+ /usr/include/sys/types.h /usr/include/bits/types/clock_t.h \
+ /usr/include/bits/types/clockid_t.h /usr/include/bits/types/time_t.h \
+ /usr/include/bits/types/timer_t.h /usr/include/endian.h \
+ /usr/include/bits/endian.h /usr/include/bits/endianness.h \
+ /usr/include/bits/byteswap.h /usr/include/bits/uintn-identity.h \
+ /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/types/sigset_t.h /usr/include/bits/types/__sigset_t.h \
  /usr/include/bits/types/struct_timeval.h \
  /usr/include/bits/types/struct_timespec.h \
  /usr/include/bits/pthreadtypes.h /usr/include/bits/thread-shared-types.h \
