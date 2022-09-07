@@ -2,7 +2,25 @@
 #include "common.h"
 #include "shader.h"
 
-drawEntitiy n;
+
+MATERIAL_PROPERTIES renderer_AssignTexture(unsigned int __texture ,unsigned char __type){
+    MATERIAL_PROPERTIES rVAL;
+        switch (__type){
+        case TEXTURE_TYPE_SINGULAR:
+            rVAL.type = __type;
+            rVAL.texture = __texture;
+            rVAL.texturecount = 1;
+            printf("TEXTURE_TYPE_SINGULAR\n");
+        break;
+        case TEXTURE_TYPE_BLEND:
+            printf("TEXTURE_TYPE_BLEND\n");
+        break;
+        
+        default: printf("err\n"); break;
+        }
+
+    return rVAL;
+}
 
 void renderer_SetUniform(unsigned int program, const char *name,float value){
     
@@ -15,6 +33,10 @@ unsigned int renderer_GenerateTexture(const char *__texturepath){
     size_t *textureLenght;
 
     unsigned char *textureSource = io_readBinary(__texturepath,&textureLenght);
+    if(textureSource == NULL){
+        printf("MISSING OR CORRUPTED TEXTURE PATH!\n");
+        return 0;
+    }
     unsigned char *data = texture_parseTGA(textureSource,*textureLenght);
     if(data != NULL)
         {printf("success!\n");}
@@ -31,8 +53,8 @@ unsigned int renderer_GenerateTexture(const char *__texturepath){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); //MIPMAPING
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);               //MIPMAPING
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     //GEN TEXTURE
     unsigned int texture;
@@ -54,7 +76,7 @@ unsigned int renderer_CompileShader(char *shaderSource){
 /*VERTEX SHADER*/
     
     //Load shader from file
-    char *tmp = io_read(shaderSource);//(const char**)&tmp
+    char *tmp = io_read(shaderSource);
 
     struct shaderSource source = shader_seperate(tmp);
     free(tmp);
@@ -112,8 +134,10 @@ void renderer_UseShaderProgram(unsigned int program){
 }
 
 
-void renderer_PushGeometry(floatArray *__verticies,uIntArray *__indicies, 
-                            unsigned int __shader, unsigned int __texture){
+void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray *__indicies, 
+                            unsigned int __shader, MATERIAL_PROPERTIES __texture){
+
+    drawEntitiy tmp;
 
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
@@ -143,22 +167,27 @@ void renderer_PushGeometry(floatArray *__verticies,uIntArray *__indicies,
     glBindVertexArray(0);
 
 
-    n.EBO = EBO;
-    n.VAO = VAO;
-    n.VBO = VBO;
-    n.PRG = __shader;
-    n.TXT = __texture;
-    n.IND = __indicies->size;
+    tmp.name = "NEW";
+    tmp.layer = 0;
+    tmp.EBO = EBO;
+    tmp.VAO = VAO;
+    tmp.VBO = VBO;
+    tmp.PRG = __shader;
+    tmp.MAT  = __texture;
+    tmp.IND = __indicies->size;
+    push_drawArray(__scene,&tmp);
 }
 
-void renderer_RenderScene(){
-    glUseProgram(n.PRG);
-    glBindTexture(GL_TEXTURE_2D, n.TXT);
-    glBindVertexArray(n.VAO);
+void renderer_RenderScene(drawArray *__scene){
+    for(int i = 0;i < __scene->used;++i){
+        glUseProgram(__scene->array[i].PRG);
+        glBindTexture(GL_TEXTURE_2D, __scene->array[i].MAT.texture);
+        glBindVertexArray(__scene->array[i].VAO);
 
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-    glBindVertexArray(0);
+        glBindVertexArray(0);
+    }
 }
 
 void renderer_ClearBackBuffer(){
@@ -167,9 +196,9 @@ void renderer_ClearBackBuffer(){
 }
 
 void renderer_CleanUP(){
-    glDeleteTextures(1, &n.TXT);
-
-    glDeleteVertexArrays(1, &n.VAO);
-    glDeleteBuffers(1, &n.VBO);
-    glDeleteBuffers(1, &n.EBO);
+    //glDeleteTextures(1, &n.MAT.texture);
+//
+    //glDeleteVertexArrays(1, &n.VAO);
+    //glDeleteBuffers(1, &n.VBO);
+    //glDeleteBuffers(1, &n.EBO);
 }

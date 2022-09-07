@@ -43,55 +43,89 @@ unsigned char* texture_parseTGA(unsigned char *__source, size_t __lenght){
         default: printf("Error! Unrecognized or unsupported image format! %d\n", header.datatypecode); break;
     }
 
+    short int packagesize = header.bitsperpixel / 8;
     
     rVAL = malloc((header.width*header.height) * (4 * sizeof(unsigned char)));
 
     int p = 0;
 
     int raw_skip = 0;
-    for(int i = 18;i + 4 < __lenght - 27;i= i + 5){//27 is the total bytes of tga footer
+    for(int i = 18;i + packagesize < __lenght - 27;i= i + (packagesize + 1)){//27 is the total bytes of tga footer
         int rle = (__source[i] & 0x7f);
 
             if(raw_skip > 0){
-            //printf("RAW: ");
-            //printf("%x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3]);
-                
-                rVAL[p]   = __source[i+2];//r
-                rVAL[p+1] = __source[i+1];//g
-                rVAL[p+2] = __source[i];  //b
-                rVAL[p+3] = __source[i+3];//a
-                p = p + 4;
+//printf("RAW: ");
+//printf("%x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3]);
+                if(packagesize == 4){
+                    rVAL[p]   = __source[i+2];//r
+                    rVAL[p+1] = __source[i+1];//g
+                    rVAL[p+2] = __source[i];  //b
+                    rVAL[p+3] = __source[i+3];//a
+                    p = p + 4;
+                }else{
+//printf("RAW: ");
+//printf("%x %x %x\n", __source[i],__source[i+1],__source[i+2]);
+                    rVAL[p]   = __source[i+2];//r
+                    rVAL[p+1] = __source[i+1];//g
+                    rVAL[p+2] = __source[i];  //b
+                    rVAL[p+3] = 0xFF;
+                    p = p + 4;
+                }
 
                 i = i - 1;
                 --raw_skip;
             }else if(__source[i] & 0x80){
-            //printf("rle: %d | ", rle);
-            //printf("%x %x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3],__source[i+4]);
+                if(packagesize == 4){
+//printf("rle: %d | ", rle);
+//printf("%x %x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3],__source[i+4]);
 
-                for(int j = 0; j <= rle;++j){
+                    for(int j = 0; j <= rle;++j){
+                        rVAL[p+3] = __source[i+4];//a
+                        rVAL[p]   = __source[i+3];//r
+                        rVAL[p+1] = __source[i+2];//g
+                        rVAL[p+2] = __source[i+1];//b
+
+                        p = p + 4;                    
+                    }
+                }else{
+//printf("rle: %d | ", rle);
+//printf("%x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3]);
+                    for(int j = 0; j <= rle;++j){
+                        rVAL[p+3] = 255;
+                        rVAL[p]   = __source[i+3];//r
+                        rVAL[p+1] = __source[i+2];//g
+                        rVAL[p+2] = __source[i+1];//b
+
+                        p = p + 4;                    
+                    }
+                }
+
+            }else {
+ 
+                if(packagesize == 4){
+//printf("RAWHeader skipping next: %d | ",rle);
+//printf("%x %x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3],__source[i+4]);
+
                     rVAL[p+3] = __source[i+4];//a
                     rVAL[p]   = __source[i+3];//r
                     rVAL[p+1] = __source[i+2];//g
                     rVAL[p+2] = __source[i+1];//b
-                    
-                    p = p + 4;                    
+
+                    p = p + 4;
+                }else{
+//printf("RAWHeader skipping next: %d | ",rle);
+//printf("%x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3]);
+
+
+                    rVAL[p+3] = 255;//a
+                    rVAL[p]   = __source[i+3];  //r
+                    rVAL[p+1] = __source[i+2];//g
+                    rVAL[p+2] = __source[i+1];//b
+
+                    p = p + 4;
                 }
-
-            }else {
-            //printf("RAWHeader skipping next: %d | ",rle);
-            //printf("%x %x %x %x %x\n", __source[i],__source[i+1],__source[i+2],__source[i+3],__source[i+4]);
-
-                rVAL[p+3] = __source[i+4];//a
-                rVAL[p]   = __source[i+3];  //r
-                rVAL[p+1] = __source[i+2];//g
-                rVAL[p+2] = __source[i+1];//b
-                
-                p = p + 4;
-
                 raw_skip = __source[i];
             }
-
     }
-
     return rVAL;
 }

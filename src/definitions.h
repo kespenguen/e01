@@ -4,6 +4,12 @@
 #include <stdlib.h>
 
 typedef struct {
+   unsigned char type;
+   unsigned int texture;
+   size_t texturecount;
+} MATERIAL_PROPERTIES;
+
+typedef struct {
     char *name;
     unsigned int layer;
 
@@ -12,7 +18,7 @@ typedef struct {
     unsigned int EBO;
     unsigned int IND;
     unsigned int PRG;
-    unsigned int TXT;
+    MATERIAL_PROPERTIES MAT;
 }drawEntitiy;
 
 typedef struct {

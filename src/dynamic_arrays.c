@@ -104,21 +104,23 @@ void free_uIntArray(uIntArray *a){
 }
 /************DYNAMIC DRAW ARRAY**************/
 void set_drawArray(drawArray *a, size_t s){
-    a->array = malloc(s * sizeof(drawArray));
+    a->array = malloc(s * sizeof(drawEntitiy));
     a->used = 0;
     a->size = s;
-    for(int i = 0; i < a->size;++i){
-        drawArray x;
-        a->array[i] = x;
+
+    drawEntitiy def;
+    for(int i = 0; i < s;++i){
+
+        a->array[i] = def;
     }
 }
-void push_drawArray(drawArray *a, float e){
+void push_drawArray(drawArray *a, drawEntitiy *e){
 
     if (a->used == a->size) {
       a->size *= 2;
-      a->array = realloc(a->array, a->size * sizeof(float));
+      a->array = realloc(a->array, a->size * sizeof(drawEntitiy));
     }
-    a->array[a->used++] = e;
+    a->array[a->used++] = *e;
 }
 void copy_drawArray(drawArray *a, const void *d, size_t s){
 

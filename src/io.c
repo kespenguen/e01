@@ -2,10 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* io_read(const char *input){
+char* io_read(const char *__path){
     FILE *f;
     
-    f = fopen(input, "r");
+    f = fopen(__path, "r");
+    if(!f){
+        printf("IO ERROR! Failed to open %s\n", __path);
+    }
     
     size_t s;
         fseek(f, 0, SEEK_END);
@@ -24,6 +27,12 @@ unsigned char* io_readBinary(const char *__path, size_t **__lenght){
     FILE *f;
 
     f = fopen(__path , "rb");
+
+    if(!f){
+        printf("IO ERROR! Failed to open %s\n",__path);
+        *__lenght = 0;
+        return NULL;
+    }
 
     size_t s;
         fseek(f, 0 , SEEK_END);

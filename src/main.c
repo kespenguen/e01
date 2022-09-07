@@ -4,9 +4,7 @@
 
 int main(){
     
-    /********************/
     /*    INIT_GLFW     */
-    /********************/
     if(!glfwInit()){
         fprintf(stderr, "GLFW Init Failed!\n");
         return -1;
@@ -24,9 +22,8 @@ int main(){
     }
     glfwMakeContextCurrent(_window);
 
-    /********************/
+
     /*    LOAD_GLAD     */
-    /********************/
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
         printf("Failed to initialize GLAD");
         return -1;
@@ -36,7 +33,8 @@ int main(){
 
     glfwSetFramebufferSizeCallback(_window, framebuffer_size_callback);
 
-
+    drawArray scene;
+    set_drawArray(&scene,1);
     
     float vertices[] = {
         // positions          // colors           // texture coords
@@ -66,15 +64,19 @@ int main(){
 
     uIntArray textures;//TEXTURE LIST
     set_uIntArray(&textures,1);
-    unsigned int lol = renderer_GenerateTexture("/home/od/e01/res/textures/base3.tga");
-    push_uIntArray(&textures,lol);
+    unsigned int t1 = renderer_GenerateTexture("/home/od/e01/res/textures/base.tga");
+    unsigned int t2 = renderer_GenerateTexture("/home/od/e01/res/textures/base2.tga");
+    push_uIntArray(&textures,t1);
+    push_uIntArray(&textures,t2);
 
-    renderer_PushGeometry(&vert, &ind, x, lol);
+    MATERIAL_PROPERTIES m = renderer_AssignTexture(t1,TEXTURE_TYPE_SINGULAR);
+
+    renderer_PushGeometry(&scene,&vert, &ind, x, m);
+
+    
     free_floatArray(&vert);
 
-    /********************/
     /*    MAIN_LOOP     */
-    /********************/
     while(!glfwWindowShouldClose(_window)){
         handle_input(_window);
         //float time = glfwGetTime();
@@ -83,17 +85,16 @@ int main(){
 
         renderer_ClearBackBuffer();
 
-        renderer_RenderScene();
+        renderer_RenderScene(&scene);
 
         glfwSwapBuffers(_window);
         glfwPollEvents();    
     }
     
 
-    /********************/
+    
     /*    EXIT_PROG     */
-    /********************/
-
+    free_drawArray(&scene);
     free_uIntArray(&shaderPrograms);
     free_uIntArray(&textures);
     

@@ -14,6 +14,9 @@
 |       5 	    10 bytes 	Image specification 	    Image dimensions and format         |
 \__________________________________________________________________________________________*/
 
+#define TEXTURE_TYPE_SINGULAR 0
+#define TEXTURE_TYPE_BLEND    255
+
 typedef struct {
    char  idlength;
    char  colourmaptype;
