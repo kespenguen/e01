@@ -22,7 +22,7 @@ unsigned char* texture_parseTGA(unsigned char *__source, size_t __lenght){
         header.bitsperpixel     = __source[16];
 
     unsigned char *tga_data;
-
+/*
     printf("Parsing TGA Image!\n");
     
     printf("Width: %d\n",  header.width);
@@ -42,7 +42,7 @@ unsigned char* texture_parseTGA(unsigned char *__source, size_t __lenght){
 
         default: printf("Error! Unrecognized or unsupported image format! %d\n", header.datatypecode); break;
     }
-
+*/
     short int packagesize = header.bitsperpixel / 8;
     
     rVAL = malloc((header.width*header.height) * (4 * sizeof(unsigned char)));

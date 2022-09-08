@@ -5,7 +5,7 @@
 
 typedef struct {
    unsigned char type;
-   unsigned int texture;
+   unsigned int *texture;
    size_t texturecount;
 } MATERIAL_PROPERTIES;
 

@@ -3,17 +3,32 @@
 #include "shader.h"
 
 
-MATERIAL_PROPERTIES renderer_AssignTexture(unsigned int __texture ,unsigned char __type){
+MATERIAL_PROPERTIES renderer_GenerateMaterial(unsigned int __shaderprogram, unsigned int *__texture,size_t __size ,unsigned char __type){
     MATERIAL_PROPERTIES rVAL;
         switch (__type){
         case TEXTURE_TYPE_SINGULAR:
-            rVAL.type = __type;
+            rVAL.type = TEXTURE_TYPE_SINGULAR;
             rVAL.texture = __texture;
             rVAL.texturecount = 1;
-            printf("TEXTURE_TYPE_SINGULAR\n");
         break;
         case TEXTURE_TYPE_BLEND:
-            printf("TEXTURE_TYPE_BLEND\n");
+            rVAL.type = TEXTURE_TYPE_BLEND;
+            rVAL.texture = malloc(__size * sizeof(unsigned int));
+            rVAL.texture = __texture;
+            rVAL.texturecount = __size;
+
+            glUseProgram(__shaderprogram);
+            unsigned int *l, *s;
+            shader_GetUniforms(__shaderprogram,&l,&s,GL_SAMPLER_2D);
+            
+            if(*s != __size)
+                {printf("ERROR! specified texture amount is larger than shader samplers!\n");}else{
+                for(int i = 0; i < __size; ++i){
+                    shader_SetINTwLOC(__shaderprogram,l[i],i);
+                }
+            }
+            free(l);
+            
         break;
         
         default: printf("err\n"); break;
@@ -38,8 +53,10 @@ unsigned int renderer_GenerateTexture(const char *__texturepath){
         return 0;
     }
     unsigned char *data = texture_parseTGA(textureSource,*textureLenght);
-    if(data != NULL)
-        {printf("success!\n");}
+    if(data == NULL){
+        printf("FAILED TO PARSE TGA TEXTURE!\n");
+        return 0;
+    }
 
 
     size_t width  =    (textureSource[13]<<8) | textureSource[12];
@@ -180,12 +197,23 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
 
 void renderer_RenderScene(drawArray *__scene){
     for(int i = 0;i < __scene->used;++i){
+        //SHADER PROGRAM
         glUseProgram(__scene->array[i].PRG);
-        glBindTexture(GL_TEXTURE_2D, __scene->array[i].MAT.texture);
+        //TEXTURE
+        if(__scene->array[i].MAT.type == TEXTURE_TYPE_SINGULAR){
+            glBindTexture(GL_TEXTURE_2D, *__scene->array[i].MAT.texture);
+        }else{
+            for(int j = 0;j < __scene->array[i].MAT.texturecount;++j){
+                glActiveTexture(GL_TEXTURE0 + j);
+                glBindTexture(GL_TEXTURE_2D, __scene->array[i].MAT.texture[j]);
+               // printf("texture %d\n",__scene->array[i].MAT.texture[j]);
+            }
+        }
+        //VERTEX ARRAY
         glBindVertexArray(__scene->array[i].VAO);
-
+        //DRAWCALL
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
+        //UNBIND
         glBindVertexArray(0);
     }
 }

@@ -16,7 +16,7 @@ unsigned int renderer_CompileShader(char *shaderSource);
 
 unsigned int renderer_GenerateTexture(const char* __texturepath);
 
-MATERIAL_PROPERTIES renderer_AssignTexture(unsigned int __texture ,unsigned char __type);
+MATERIAL_PROPERTIES renderer_GenerateMaterial(unsigned int __shaderprogram,unsigned int *__texture, size_t __size,unsigned char __type);
 
 void renderer_SetUniform(unsigned int program, const char *name,float value);
 

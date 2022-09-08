@@ -69,7 +69,8 @@ int main(){
     push_uIntArray(&textures,t1);
     push_uIntArray(&textures,t2);
 
-    MATERIAL_PROPERTIES m = renderer_AssignTexture(t1,TEXTURE_TYPE_SINGULAR);
+    MATERIAL_PROPERTIES m = renderer_GenerateMaterial(x,textures.array,textures.used,TEXTURE_TYPE_BLEND);
+    
 
     renderer_PushGeometry(&scene,&vert, &ind, x, m);
 
