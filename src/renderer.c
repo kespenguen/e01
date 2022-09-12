@@ -2,6 +2,13 @@
 #include "common.h"
 #include "shader.h"
 
+void renderer_UpdateTransform(mat4 *__transform){
+
+
+
+//unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+//glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+}
 
 MATERIAL_PROPERTIES renderer_GenerateMaterial(unsigned int __shaderprogram, unsigned int *__texture,size_t __size ,unsigned char __type){
     MATERIAL_PROPERTIES rVAL;
@@ -171,17 +178,27 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, __indicies->size, __indicies->array, GL_STATIC_DRAW);
 
    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+                                                  //Sağdan sola vbo
+                                                  //eleman sayısı
+                                                  // vvvvvvvvvvvvv      
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
     // texture coord attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+    mat4 transform;
+    vec3 xxx = {1.0f,0.0f,0.0f};
+    glm_translate_make(transform,xxx);
+
+    glm_translate(transform, (vec3){1.0f, 0.0f, 0.0f});
+    //glm_rotate(transform, glm_rad(90.0f), GLM_ZUP);
+    //glm_scale(transform, (vec3){0.5f, 0.5f, 0.5f});
+
+
 
 
     tmp.name = "NEW";
@@ -190,8 +207,9 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     tmp.VAO = VAO;
     tmp.VBO = VBO;
     tmp.PRG = __shader;
-    tmp.MAT  = __texture;
+    tmp.MAT = __texture;
     tmp.IND = __indicies->size;
+    tmp.TRN = &transform;
     push_drawArray(__scene,&tmp);
 }
 
@@ -199,6 +217,20 @@ void renderer_RenderScene(drawArray *__scene){
     for(int i = 0;i < __scene->used;++i){
         //SHADER PROGRAM
         glUseProgram(__scene->array[i].PRG);
+        //TRANSFORM
+        glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "transform"),
+                             1, GL_FALSE, *__scene->array[i].TRN[0]);
+        //mat4 transform = {
+        //    1, 0, 0, 0,
+        //    0, 1, 0, 0,
+        //    0, 0, 1, 0,
+        //    0, 0, 0, 1
+        //};
+//
+        //glm_translate(transform, (vec3){1.0f, 0.0f, 0.0f});
+        //glm_rotate(transform, glm_rad(90.0f), GLM_ZUP);
+        //glm_scale(transform, (vec3){0.5f, 0.5f, 0.5f});        
+        
         //TEXTURE
         if(__scene->array[i].MAT.type == TEXTURE_TYPE_SINGULAR){
             glBindTexture(GL_TEXTURE_2D, *__scene->array[i].MAT.texture);

@@ -1,6 +1,6 @@
 #include "common.h"
 #include <string.h>
-#include <math.h>
+
 
 int main(){
     
@@ -38,10 +38,10 @@ int main(){
     
     float vertices[] = {
         // positions          // colors           // texture coords
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // top right
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // top left 
+         0.5f,  0.5f, 0.0f,      1.0f, 1.0f,   // top right
+         0.5f, -0.5f, 0.0f,      1.0f, 0.0f,   // bottom right
+        -0.5f, -0.5f, 0.0f,      0.0f, 0.0f,   // bottom left
+        -0.5f,  0.5f, 0.0f,      0.0f, 1.0f    // top left 
     };
 
     unsigned int indices[] = {  // note that we start from 0!
@@ -50,7 +50,7 @@ int main(){
     };  
 
     floatArray vert;
-    set_floatArray(&vert,32);
+    set_floatArray(&vert,20);
     copy_floatArray(&vert,vertices,sizeof(vertices));
 
     uIntArray ind;
@@ -74,7 +74,6 @@ int main(){
 
     renderer_PushGeometry(&scene,&vert, &ind, x, m);
 
-    
     free_floatArray(&vert);
 
     /*    MAIN_LOOP     */

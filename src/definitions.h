@@ -2,6 +2,8 @@
 #define __DEFINITIONS_H__
 
 #include <stdlib.h>
+#include <cglm/cglm.h>
+
 
 typedef struct {
    unsigned char type;
@@ -18,6 +20,7 @@ typedef struct {
     unsigned int EBO;
     unsigned int IND;
     unsigned int PRG;
+    mat4 *TRN;
     MATERIAL_PROPERTIES MAT;
 }drawEntitiy;
 

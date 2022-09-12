@@ -19,20 +19,20 @@ void shader_GetUniforms(unsigned int __program, unsigned int **__locations, unsi
     printf("Active Uniforms: %d\n", count);
 
     unsigned int *locations = malloc(count * sizeof(unsigned int));
-    size_t filtered_type = 0;
+    unsigned int filtered_type = 0;
 
     for (int i = 0; i < count; i++){
         glGetActiveUniform(__program, (GLuint)i, bufSize, &length, &size, &type, name);
 
         if(type == __filter){
-            //printf("Uniform #%d Type: %u Name: %s\n", i, type, name);
+            printf("Uniform #%d Type: %u Name: %s\n", i, type, name);
             locations[filtered_type] = i;
 
             ++filtered_type;
         }
     }
     *__locations = locations;
-    *__amount = &count;
+    *__amount = &filtered_type;
 }
 
 void shader_SetINT(unsigned int __program, const char *__name, int __val){

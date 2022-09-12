@@ -10,8 +10,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);  
 
 void handle_input(GLFWwindow *window);
+
+
 
 #endif
