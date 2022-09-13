@@ -2,14 +2,6 @@
 #include "common.h"
 #include "shader.h"
 
-void renderer_UpdateTransform(mat4 *__transform){
-
-
-
-//unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
-//glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
-}
-
 MATERIAL_PROPERTIES renderer_GenerateMaterial(unsigned int __shaderprogram, unsigned int *__texture,size_t __size ,unsigned char __type){
     MATERIAL_PROPERTIES rVAL;
         switch (__type){
@@ -190,16 +182,11 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    mat4 transform;
-    vec3 xxx = {1.0f,0.0f,0.0f};
-    glm_translate_make(transform,xxx);
-
-    glm_translate(transform, (vec3){1.0f, 0.0f, 0.0f});
-    //glm_rotate(transform, glm_rad(90.0f), GLM_ZUP);
-    //glm_scale(transform, (vec3){0.5f, 0.5f, 0.5f});
 
 
-
+    //glm_rotate_make(*transform, glm_rad(90.0f), GLM_ZUP); /* creates rotation matrix */
+    //glm_scale_make(*transform,(vec3){0.5f, 0.5f, 0.5f});
+    //glm_scale(*transform, (vec3){0.5f, 0.5f, 0.5f});
 
     tmp.name = "NEW";
     tmp.layer = 0;
@@ -209,7 +196,10 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     tmp.PRG = __shader;
     tmp.MAT = __texture;
     tmp.IND = __indicies->size;
-    tmp.TRN = &transform;
+
+    *tmp.TRN = malloc(sizeof(mat4));
+    glm_translate_make(**tmp.TRN,(vec3){1.0f,0.0f,0.0f});
+
     push_drawArray(__scene,&tmp);
 }
 
@@ -219,17 +209,7 @@ void renderer_RenderScene(drawArray *__scene){
         glUseProgram(__scene->array[i].PRG);
         //TRANSFORM
         glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "transform"),
-                             1, GL_FALSE, *__scene->array[i].TRN[0]);
-        //mat4 transform = {
-        //    1, 0, 0, 0,
-        //    0, 1, 0, 0,
-        //    0, 0, 1, 0,
-        //    0, 0, 0, 1
-        //};
-//
-        //glm_translate(transform, (vec3){1.0f, 0.0f, 0.0f});
-        //glm_rotate(transform, glm_rad(90.0f), GLM_ZUP);
-        //glm_scale(transform, (vec3){0.5f, 0.5f, 0.5f});        
+                             1, GL_FALSE, **__scene->array[i].TRN[0]);
         
         //TEXTURE
         if(__scene->array[i].MAT.type == TEXTURE_TYPE_SINGULAR){

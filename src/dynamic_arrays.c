@@ -132,7 +132,10 @@ void copy_drawArray(drawArray *a, const void *d, size_t s){
     a->size = s;
 }
 void free_drawArray(drawArray *a){
-    
+
+    free(*a->array->TRN);
+    *a->array->TRN = NULL;
+
     free(a->array);
     a->array = NULL;
     a->used = a->size = 0;

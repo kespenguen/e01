@@ -20,7 +20,7 @@ typedef struct {
     unsigned int EBO;
     unsigned int IND;
     unsigned int PRG;
-    mat4 *TRN;
+    mat4 **TRN;
     MATERIAL_PROPERTIES MAT;
 }drawEntitiy;
 

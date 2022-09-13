@@ -38,5 +38,10 @@
   "directory": "/home/od/e01/build",
   "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/shader.c.o -c /home/od/e01/src/shader.c",
   "file": "/home/od/e01/src/shader.c"
+},
+{
+  "directory": "/home/od/e01/build",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/transform.c.o -c /home/od/e01/src/transform.c",
+  "file": "/home/od/e01/src/transform.c"
 }
 ]

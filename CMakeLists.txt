@@ -14,6 +14,7 @@ add_executable(
         src/io.c
         src/texture.c
         src/shader.c
+        src/transform.c
 )
 target_link_libraries(e01 glfw GL X11 pthread Xrandr Xi dl m)
 

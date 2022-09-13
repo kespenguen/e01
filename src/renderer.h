@@ -1,15 +1,10 @@
 #ifndef __renderer_h__
 #define __renderer_h__
 
-
 #include "dynamic_arrays.h"
-#include <cglm/cglm.h>
+#include "transform.h"
 #include "texture.h"
 
-
-
-
-void renderer_UpdateTransform(mat4 *__transform);
 
 void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies, uIntArray *__indicies,
                             unsigned int __shader, MATERIAL_PROPERTIES __texture);

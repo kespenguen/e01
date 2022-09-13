@@ -1,7 +1,6 @@
 #include "common.h"
 #include <string.h>
 
-
 int main(){
     
     /*    INIT_GLFW     */
@@ -76,12 +75,12 @@ int main(){
 
     free_floatArray(&vert);
 
+    glm_translate(**scene.array->TRN,(vec3){-1.0f,0.0f,0.0f});
     /*    MAIN_LOOP     */
     while(!glfwWindowShouldClose(_window)){
         handle_input(_window);
-        //float time = glfwGetTime();
-        //float greenValue = (sin(time) / 2.0f) + 0.5f;
-        //renderer_SetUniform(x,"ourColor", greenValue);
+
+        glm_rotate(**scene.array->TRN,glm_rad(90.0f),(vec3){0.0f,0.0f,0.0001f});
 
         renderer_ClearBackBuffer();
 

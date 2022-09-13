@@ -16,7 +16,7 @@ void shader_GetUniforms(unsigned int __program, unsigned int **__locations, unsi
     GLsizei length; // name length
     
     glGetProgramiv(__program, GL_ACTIVE_UNIFORMS, &count);
-    printf("Active Uniforms: %d\n", count);
+    //printf("Active Uniforms: %d\n", count);
 
     unsigned int *locations = malloc(count * sizeof(unsigned int));
     unsigned int filtered_type = 0;
@@ -25,7 +25,7 @@ void shader_GetUniforms(unsigned int __program, unsigned int **__locations, unsi
         glGetActiveUniform(__program, (GLuint)i, bufSize, &length, &size, &type, name);
 
         if(type == __filter){
-            printf("Uniform #%d Type: %u Name: %s\n", i, type, name);
+            //printf("Uniform #%d Type: %u Name: %s\n", i, type, name);
             locations[filtered_type] = i;
 
             ++filtered_type;
