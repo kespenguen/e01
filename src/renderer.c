@@ -203,13 +203,31 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     push_drawArray(__scene,&tmp);
 }
 
-void renderer_RenderScene(drawArray *__scene){
+void renderer_RenderScene(drawArray *__scene, int __flags){
+
+    glEnable(GL_DEPTH_TEST);  
+
+    mat4 proj = GLM_MAT4_IDENTITY_INIT;
+    mat4 view = GLM_MAT4_IDENTITY_INIT;
+    glm_translate(view,(vec3){0.0f, 0.0f, -3.0f}); 
+
+    if(__flags == RENDER_PERSPECTIVE){
+        glm_perspective(FOV,(float)ScreenWidth / (float)ScreenHeight,
+                         0.1f,100.0f,proj);
+    }
+    printf("FOV: %f\n",FOV);
     for(int i = 0;i < __scene->used;++i){
         //SHADER PROGRAM
         glUseProgram(__scene->array[i].PRG);
         //TRANSFORM
-        glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "transform"),
+        glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "model"),
                              1, GL_FALSE, **__scene->array[i].TRN[0]);
+        
+        glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "view"),
+                             1, GL_FALSE, view[0]);
+
+        glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "projection"),
+                             1, GL_FALSE, proj[0]);
         
         //TEXTURE
         if(__scene->array[i].MAT.type == TEXTURE_TYPE_SINGULAR){
@@ -232,7 +250,7 @@ void renderer_RenderScene(drawArray *__scene){
 
 void renderer_ClearBackBuffer(){
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void renderer_CleanUP(){

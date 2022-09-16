@@ -10,6 +10,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+static float FOV;
+static int ScreenWidth  = 800;
+static int ScreenHeight = 600;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);  
 

@@ -9,6 +9,6 @@ void io_write(const char *__path, char *__source);
 
 unsigned char* io_readBinary(const char *__path, size_t **__lenght);
 
-
+void io_ParseCollada(const char *__path);
 
 #endif

@@ -49,3 +49,28 @@ unsigned char* io_readBinary(const char *__path, size_t **__lenght){
     
     return tmp;
 }
+
+void io_ParseCollada(const char *__path){
+    FILE *f;
+    
+    f = fopen(__path, "r");
+    if(!f){
+        printf("IO ERROR! Failed to open %s\n", __path);
+    }
+    
+    size_t s;
+        fseek(f, 0, SEEK_END);
+        s = ftell(f);
+        fseek(f, 0, SEEK_SET);
+
+    
+    char *str = malloc(s * sizeof(char));
+
+
+    for(size_t i = 0; i < s; ++i){
+       
+    }
+
+    fclose(f); 
+    
+}

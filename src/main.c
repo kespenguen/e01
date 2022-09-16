@@ -2,7 +2,6 @@
 #include <string.h>
 
 int main(){
-    
     /*    INIT_GLFW     */
     if(!glfwInit()){
         fprintf(stderr, "GLFW Init Failed!\n");
@@ -13,7 +12,7 @@ int main(){
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); MacOS shit
   
-    GLFWwindow* _window = glfwCreateWindow(800, 600, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
+    GLFWwindow* _window = glfwCreateWindow(ScreenWidth, ScreenHeight, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
     if (_window == NULL){
         printf("Failed to create GLFW window");
         glfwTerminate();
@@ -74,17 +73,17 @@ int main(){
     renderer_PushGeometry(&scene,&vert, &ind, x, m);
 
     free_floatArray(&vert);
+//glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
 
     glm_translate(**scene.array->TRN,(vec3){-1.0f,0.0f,0.0f});
+    glm_rotate(**scene.array->TRN,glm_rad(-55.0f),(vec3){1.0f,0.0f,0.0f});
     /*    MAIN_LOOP     */
     while(!glfwWindowShouldClose(_window)){
         handle_input(_window);
 
-        glm_rotate(**scene.array->TRN,glm_rad(90.0f),(vec3){0.0f,0.0f,0.0001f});
-
         renderer_ClearBackBuffer();
 
-        renderer_RenderScene(&scene);
+        renderer_RenderScene(&scene,RENDER_PERSPECTIVE);
 
         glfwSwapBuffers(_window);
         glfwPollEvents();    

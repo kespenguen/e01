@@ -27,6 +27,7 @@ typedef struct {
 typedef struct {
     drawEntitiy *array;
 
+
     size_t used;
     size_t size;
 }drawArray;
