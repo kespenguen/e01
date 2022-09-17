@@ -1,12 +1,12 @@
 #ifndef __renderer_h__
 #define __renderer_h__
 
+
 #include "dynamic_arrays.h"
 #include "transform.h"
 #include "texture.h"
+#include "input.h"
 
-#define RENDER_PERSPECTIVE  1
-#define RENDER_ORTHOGRAPHIC 2
 
 void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies, uIntArray *__indicies,
                             unsigned int __shader, MATERIAL_PROPERTIES __texture);
@@ -19,7 +19,7 @@ MATERIAL_PROPERTIES renderer_GenerateMaterial(unsigned int __shaderprogram,unsig
 
 void renderer_SetUniform(unsigned int program, const char *name,float value);
 
-void renderer_RenderScene(drawArray *__scene, int __flags);
+void renderer_RenderScene(drawArray *__scene, GAME_INPUT *__renderproperties);
 
 void renderer_ClearBackBuffer();
 

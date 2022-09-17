@@ -12,7 +12,19 @@ int main(){
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); MacOS shit
   
-    GLFWwindow* _window = glfwCreateWindow(ScreenWidth, ScreenHeight, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
+    GAME_INPUT input;
+        input.fov = 70.0f;
+        input.screen_width = 800;
+        input.screen_height = 600;
+        input.flags = RENDER_PERSPECTIVE;
+    GAME_INPUT *inputptr = &input;
+    
+    CMD cmd;
+        cmd.Key_DOWN = 0;
+        cmd.Key_UP = 0;
+    CMD *cmdptr = &cmd;
+
+    GLFWwindow* _window = glfwCreateWindow(inputptr->screen_width, inputptr->screen_height, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
     if (_window == NULL){
         printf("Failed to create GLFW window");
         glfwTerminate();
@@ -79,11 +91,11 @@ int main(){
     glm_rotate(**scene.array->TRN,glm_rad(-55.0f),(vec3){1.0f,0.0f,0.0f});
     /*    MAIN_LOOP     */
     while(!glfwWindowShouldClose(_window)){
-        handle_input(_window);
+        handle_input(_window,&cmdptr,&inputptr);
 
         renderer_ClearBackBuffer();
 
-        renderer_RenderScene(&scene,RENDER_PERSPECTIVE);
+        renderer_RenderScene(&scene,inputptr);
 
         glfwSwapBuffers(_window);
         glfwPollEvents();    

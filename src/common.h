@@ -6,18 +6,15 @@
 
 #include "renderer.h"
 #include "io.h"
+#include "input.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 
-static float FOV;
-static int ScreenWidth  = 800;
-static int ScreenHeight = 600;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);  
 
-void handle_input(GLFWwindow *window);
-
+void handle_input(GLFWwindow *__window, CMD **__commands, GAME_INPUT **__gameinput);
 
 
 #endif

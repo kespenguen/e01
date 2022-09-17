@@ -12,6 +12,7 @@ add_executable(
         src/dynamic_arrays.c
         src/renderer.c
         src/io.c
+        src/input.c
         src/texture.c
         src/shader.c
         src/transform.c

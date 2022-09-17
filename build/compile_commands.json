@@ -31,6 +31,11 @@
 },
 {
   "directory": "/home/od/e01/build",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/input.c.o -c /home/od/e01/src/input.c",
+  "file": "/home/od/e01/src/input.c"
+},
+{
+  "directory": "/home/od/e01/build",
   "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/texture.c.o -c /home/od/e01/src/texture.c",
   "file": "/home/od/e01/src/texture.c"
 },
