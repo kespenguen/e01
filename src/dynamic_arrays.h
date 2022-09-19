@@ -3,28 +3,25 @@
 
 #include "definitions.h"
 
-
 /************DYNAMIC FLOAT ARRAY**************/
-void set_floatArray(floatArray *a, size_t s);
-void copy_floatArray(floatArray *a, const void *d, size_t s);
-void push_floatArray(floatArray *a, float e);
-void free_floatArray(floatArray *a);
+void set_floatArray(floatArray *__arr, size_t __size);
+void copy_floatArray(floatArray *_arr, const void *__src, size_t __size);
+void push_floatArray(floatArray *_arr, float __element);
+void free_floatArray(floatArray *_arr);
 /**************DYNAMIC INT ARRAY**************/
-void set_intArray(intArray *a, size_t s);
-void copy_intArray(intArray *a, const void *d, size_t s);
-void push_intArray(intArray *a, int e);
-void free_intArray(intArray *a);
+void set_intArray(intArray *_arr, size_t __size);
+void copy_intArray(intArray *_arr, const void *__src, size_t __size);
+void push_intArray(intArray *_arr, int __element);
+void free_intArray(intArray *_arr);
 /*********DYNAMIC UNSIGNED INT ARRAY**********/
-void set_uIntArray(uIntArray *a, size_t s);
-void copy_uIntArray(uIntArray *a, const void *d, size_t s);
-void push_uIntArray(uIntArray *a, unsigned int e);
-void free_uIntArray(uIntArray *a);
+void set_uIntArray(uIntArray *_arr, size_t __size);
+void copy_uIntArray(uIntArray *_arr, const void *__src, size_t __size);
+void push_uIntArray(uIntArray *_arr, unsigned int __element);
+void free_uIntArray(uIntArray *_arr);
 /*************DYNAMIC DRAW ARRAY**************/
-void set_drawArray(drawArray *a, size_t s);
-void copy_drawArray(drawArray *a, const void *d, size_t s);
-void push_drawArray(drawArray *a, drawEntitiy *e);
-void free_drawArray(drawArray *a);
-
-
+void set_drawArray(drawArray *_arr, size_t __size);
+void copy_drawArray(drawArray *_arr, const void *__src, size_t __size);
+void push_drawArray(drawArray *_arr, drawEntitiy *__element);
+void free_drawArray(drawArray *_arr);
 
 #endif

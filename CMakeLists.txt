@@ -4,6 +4,7 @@ project(e01 VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
+
 add_executable(
     e01 
         src/main.c
@@ -16,9 +17,15 @@ add_executable(
         src/texture.c
         src/shader.c
         src/transform.c
+        src/game.c
 )
+
 target_link_libraries(e01 glfw GL X11 pthread Xrandr Xi dl m)
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+set(EXECUTABLE_OUTPUT_PATH "../")
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 include(CPack)

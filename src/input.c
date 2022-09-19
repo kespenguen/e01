@@ -1,26 +1,52 @@
 #include "input.h"
 
+BINDS binds;
 
-void handle_commands (CMD **__commands,GAME_INPUT **__gameinput){
+void update_binds(BINDS __binds){
+    binds = __binds;
+    handle_commands();
+}
+
+void handle_commands (){
     
-    switch ((*__commands)->Key_UP){
+    switch (binds.Key_UP){
     case KEY_STATE_UP:
-        (*__gameinput)->fov += 1;
+       
     break;
     case KEY_STATE_DOWN:
         
+    break;
+    case KEY_STATE_HELD:
+
     break;
     default:break;
     };
 
 
-    switch ((*__commands)->Key_DOWN){
+    switch (binds.Key_DOWN){
     case KEY_STATE_UP:
-        (*__gameinput)->fov -= 1;
+        
     break;
     case KEY_STATE_DOWN:
         
+    break;
+    case KEY_STATE_HELD:
+
     break;
     default:break;
     };
 }
+/*    //UP ARROW
+    if(glfwGetKey(__window, GLFW_KEY_UP) == GLFW_PRESS){
+        (*__commands)->Key_UP = KEY_STATE_UP;
+    }else{
+        (*__commands)->Key_UP = KEY_STATE_DOWN;
+    }
+
+    if(glfwGetKey(__window, GLFW_KEY_DOWN) == GLFW_PRESS){
+        (*__commands)->Key_DOWN = KEY_STATE_UP;
+    }else{
+        (*__commands)->Key_DOWN = KEY_STATE_DOWN;
+    }
+
+    handle_commands(__commands,__settings);*/

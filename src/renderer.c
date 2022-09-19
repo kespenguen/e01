@@ -204,7 +204,7 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     push_drawArray(__scene,&tmp);
 }
 
-void renderer_RenderScene(drawArray *__scene, GAME_INPUT *__renderproperties){
+void renderer_RenderScene(drawArray *__scene, GAME_SETTINGS *__settings){
 
     glEnable(GL_DEPTH_TEST);  
 
@@ -212,10 +212,10 @@ void renderer_RenderScene(drawArray *__scene, GAME_INPUT *__renderproperties){
     mat4 view = GLM_MAT4_IDENTITY_INIT;
     glm_translate(view,(vec3){0.0f, 0.0f, -3.0f}); 
 
-    if(__renderproperties->flags == RENDER_PERSPECTIVE){
-        glm_perspective(glm_rad(__renderproperties->fov),(float)__renderproperties->screen_width / (float)__renderproperties->screen_height, 0.1f,100.0f,proj);
+    if(__settings->flags == RENDER_PERSPECTIVE){
+        glm_perspective(glm_rad(__settings->fov),(float)__settings->screen_width / (float)__settings->screen_height, 0.1f,100.0f,proj);
     }
-    printf("FOV: %d\n",__renderproperties->screen_width);
+    
     for(int i = 0;i < __scene->used;++i){
         //SHADER PROGRAM
         glUseProgram(__scene->array[i].PRG);

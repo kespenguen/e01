@@ -3,140 +3,144 @@
 #include <string.h>
 
 /************DYNAMIC FLOAT ARRAY**************/
-void set_floatArray(floatArray *a, size_t s){
-    a->array = malloc(s * sizeof(float));
-    a->used = 0;
-    a->size = s;
-    for(int i = 0; i < a->size;++i){
-        a->array[i] = 0.0;
+void set_floatArray(floatArray *__arr, size_t __size){ //INITIALIZE
+    __arr->array = malloc(__size * sizeof(float));
+    __arr->used = 0;
+    __arr->size = __size;
+    for(int i = 0; i < __arr->size;++i){
+        __arr->array[i] = 0.0;
     }
 }
-void push_floatArray(floatArray *a, float e){
+void push_floatArray(floatArray *__arr, float __element){ //PUSH
 
-    if (a->used == a->size) {
-      a->size *= 2;
-      a->array = realloc(a->array, a->size * sizeof(float));
+    if (__arr->used == __arr->size) {
+      __arr->size *= 2;
+      __arr->array = realloc(__arr->array, __arr->size * sizeof(float));
     }
-    a->array[a->used++] = e;
+    __arr->array[__arr->used++] = __element;
 }
-void copy_floatArray(floatArray *a, const void *d, size_t s){
+void copy_floatArray(floatArray *__arr, const void *__src, size_t __size){ //COPY
 
-    a->array = malloc(s);
+    __arr->array = malloc(__size);
 
-    memcpy(a->array,(float*)d,s);
+    memcpy(__arr->array,(float*)__src,__size);
 
-    a->used = s / sizeof(float);
-    a->size = s;
+    __arr->used = __size / sizeof(float);
+    __arr->size = __size;
 }
-void free_floatArray(floatArray *a){
+void free_floatArray(floatArray *__arr){ // FREE
     
-    free(a->array);
-    a->array = NULL;
-    a->used = a->size = 0;
+    free(__arr->array);
+    __arr->array = NULL;
+    __arr->used = __arr->size = 0;
 }
+
 /***********DYNAMIC INT ARRAY*****************/
-void set_intArray(intArray *a, size_t s){
+void set_intArray(intArray *__arr, size_t __size){ //INITIALIZE
     
-    a->array = malloc(s * sizeof(int));
-    a->used = 0;
-    a->size = s;
+    __arr->array = malloc(__size * sizeof(int));
+    __arr->used = 0;
+    __arr->size = __size;
 
-    for(int i = 0; i < a->size;++i){
-        a->array[i] = 0;
+    for(int i = 0; i < __arr->size;++i){
+        __arr->array[i] = 0;
     }
 }
-void push_intArray(intArray *a, int e){
+void push_intArray(intArray *__arr, int __element){ //PUSH
 
-    if (a->used == a->size) {
-      a->size *= 2;
-      a->array = realloc(a->array, a->size * sizeof(int));
+    if (__arr->used == __arr->size) {
+      __arr->size *= 2;
+      __arr->array = realloc(__arr->array, __arr->size * sizeof(int));
     }
-    a->array[a->used++] = e;
+    __arr->array[__arr->used++] = __element;
 }
-void copy_intArray(intArray *a, const void *d, size_t s){
+void copy_intArray(intArray *__arr, const void *__src, size_t __size){ //COPY
 
-    a->array = malloc(s);
+    __arr->array = malloc(__size);
 
-    memcpy(a->array,(int*)d,s);
+    memcpy(__arr->array,(int*)__src,__size);
 
-    a->used = s / sizeof(int);
-    a->size = s;
+    __arr->used = __size / sizeof(int);
+    __arr->size = __size;
 }
-void free_intArray(intArray *a){
+void free_intArray(intArray *__arr){ //FREE
     
-    free(a->array);
-    a->array = NULL;
-    a->used = a->size = 0;
+    free(__arr->array);
+    __arr->array = NULL;
+    __arr->used = __arr->size = 0;
 }
+
 /*********DYNAMIC UNSIGNED INT ARRAY**********/
-void set_uIntArray(uIntArray *a, size_t s){
+void set_uIntArray(uIntArray *__arr, size_t __size){ //INITIALIZE
     
-    a->array = malloc(s * sizeof(unsigned int));
-    a->used = 0;
-    a->size = s;
+    __arr->array = malloc(__size * sizeof(unsigned int));
+    __arr->used = 0;
+    __arr->size = __size;
 
-    for(int i = 0; i < a->size;++i){
-        a->array[i] = 0;
+    for(int i = 0; i < __arr->size;++i){
+        __arr->array[i] = 0;
     }
 }
-void push_uIntArray(uIntArray *a, unsigned int e){
+void push_uIntArray(uIntArray *__arr, unsigned int __element){ //PUSH
 
-    if (a->used == a->size) {
-      a->size *= 2;
-      a->array = realloc(a->array, a->size * sizeof(unsigned int));
+    if (__arr->used == __arr->size) {
+      __arr->size *= 2;
+      __arr->array = realloc(__arr->array, __arr->size * sizeof(unsigned int));
     }
-    a->array[a->used++] = e;
+    __arr->array[__arr->used++] = __element;
 }
-void copy_uIntArray(uIntArray *a, const void *d, size_t s){
+void copy_uIntArray(uIntArray *__arr, const void *__src, size_t __size){ //COPY
 
-    a->array = malloc(s);
+    __arr->array = malloc(__size);
 
-    memcpy(a->array,(unsigned int*)d,s);
+    memcpy(__arr->array,(unsigned int*)__src,__size);
 
-    a->used = s / sizeof(unsigned int);
-    a->size = s;
+    __arr->used = __size / sizeof(unsigned int);
+    __arr->size = __size;
 }
-void free_uIntArray(uIntArray *a){
+void free_uIntArray(uIntArray *__arr){ //FREE
     
-    free(a->array);
-    a->array = NULL;
-    a->used = a->size = 0;
+    free(__arr->array);
+    __arr->array = NULL;
+    __arr->used = __arr->size = 0;
 }
+
 /************DYNAMIC DRAW ARRAY**************/
-void set_drawArray(drawArray *a, size_t s){
-    a->array = malloc(s * sizeof(drawEntitiy));
-    a->used = 0;
-    a->size = s;
+void set_drawArray(drawArray *__arr, size_t __size){ //INITIALIZE
+    __arr->array = malloc(__size * sizeof(drawEntitiy));
+    __arr->used = 0;
+    __arr->size = __size;
 
     drawEntitiy def;
-    for(int i = 0; i < s;++i){
+    for(int i = 0; i < __size;++i){
 
-        a->array[i] = def;
+        __arr->array[i] = def;
     }
 }
-void push_drawArray(drawArray *a, drawEntitiy *e){
+void push_drawArray(drawArray *__arr, drawEntitiy *__element){ //PUSH
 
-    if (a->used == a->size) {
-      a->size *= 2;
-      a->array = realloc(a->array, a->size * sizeof(drawEntitiy));
+    if (__arr->used == __arr->size) {
+      __arr->size *= 2;
+      __arr->array = realloc(__arr->array, __arr->size * sizeof(drawEntitiy));
     }
-    a->array[a->used++] = *e;
+    __arr->array[__arr->used++] = *__element;
 }
-void copy_drawArray(drawArray *a, const void *d, size_t s){
+void copy_drawArray(drawArray *__arr, const void *__src, size_t __size){ //COPY
 
-    a->array = malloc(s);
+    __arr->array = malloc(__size);
 
-    memcpy(a->array,(float*)d,s);
+    memcpy(__arr->array,(float*)__src,__size);
 
-    a->used = s / sizeof(float);
-    a->size = s;
+    __arr->used = __size / sizeof(float);
+    __arr->size = __size;
 }
-void free_drawArray(drawArray *a){
+void free_drawArray(drawArray *__arr){ //FREE
 
-    free(*a->array->TRN);
-    *a->array->TRN = NULL;
+    free(*__arr->array->TRN);
+    *__arr->array->TRN = NULL;
 
-    free(a->array);
-    a->array = NULL;
-    a->used = a->size = 0;
+    free(__arr->array);
+
+    __arr->array = NULL;
+    __arr->used = __arr->size = 0;
 }

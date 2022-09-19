@@ -3,3 +3,4 @@ make otf font importer
 make text renderer
 make simple user interface for debugging
 make colloda importer
+make bulk resource loader to import everything in resource folder on init

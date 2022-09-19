@@ -4,6 +4,7 @@
 #include "glad.h"
 #include <GLFW/glfw3.h>
 
+#include "game.h"
 #include "renderer.h"
 #include "io.h"
 #include "input.h"
@@ -12,9 +13,9 @@
 #include <stdio.h>
 
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height);  
+void framebuffer_size_callback(GLFWwindow *__window, int __width, int __height);  
 
-void handle_input(GLFWwindow *__window, CMD **__commands, GAME_INPUT **__gameinput);
+void handle_input(GLFWwindow *__window);
 
 
 #endif

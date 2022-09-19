@@ -10,21 +10,17 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); MacOS shit
   
-    GAME_INPUT input;
-        input.fov = 70.0f;
-        input.screen_width = 800;
-        input.screen_height = 600;
-        input.flags = RENDER_PERSPECTIVE;
-    GAME_INPUT *inputptr = &input;
-    
-    CMD cmd;
-        cmd.Key_DOWN = 0;
-        cmd.Key_UP = 0;
-    CMD *cmdptr = &cmd;
+    GAME_SETTINGS defaults = game_GetDefaultSettings();
+    GAME_SETTINGS *settings = &defaults;
 
-    GLFWwindow* _window = glfwCreateWindow(inputptr->screen_width, inputptr->screen_height, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
+    game_Start();
+
+
+    printf("%f",lulul.fov);
+
+
+    GLFWwindow* _window = glfwCreateWindow(settings->screen_width, settings->screen_height, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
     if (_window == NULL){
         printf("Failed to create GLFW window");
         glfwTerminate();
@@ -39,8 +35,7 @@ int main(){
         return -1;
     }  
 
-    glViewport(0, 0, 800, 600);
-
+    glViewport(0, 0, settings->screen_width, settings->screen_height);
     glfwSetFramebufferSizeCallback(_window, framebuffer_size_callback);
 
     drawArray scene;
@@ -69,39 +64,47 @@ int main(){
 
     uIntArray shaderPrograms;//SHADER LIST
     set_uIntArray(&shaderPrograms,1);
-    unsigned int x = renderer_CompileShader("/home/od/e01/res/vertex_shader");
+    #ifdef __win32__
+        unsigned int x = renderer_CompileShader("res\\vertex_shader");
+    #else
+        unsigned int x = renderer_CompileShader("res/vertex_shader");
+    #endif
     push_uIntArray(&shaderPrograms, x);
 
     uIntArray textures;//TEXTURE LIST
     set_uIntArray(&textures,1);
-    unsigned int t1 = renderer_GenerateTexture("/home/od/e01/res/textures/base.tga");
-    unsigned int t2 = renderer_GenerateTexture("/home/od/e01/res/textures/base2.tga");
+    #ifdef __win32__
+        unsigned int t1 = renderer_GenerateTexture("res\\textures\\base.tga");
+        unsigned int t2 = renderer_GenerateTexture("res\\textures\\base2.tga");
+    #else
+        unsigned int t1 = renderer_GenerateTexture("res/textures/base.tga");
+        unsigned int t2 = renderer_GenerateTexture("res/textures/base2.tga");
+    #endif
     push_uIntArray(&textures,t1);
     push_uIntArray(&textures,t2);
 
     MATERIAL_PROPERTIES m = renderer_GenerateMaterial(x,textures.array,textures.used,TEXTURE_TYPE_BLEND);
     
-
     renderer_PushGeometry(&scene,&vert, &ind, x, m);
 
     free_floatArray(&vert);
-//glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)); 
 
     glm_translate(**scene.array->TRN,(vec3){-1.0f,0.0f,0.0f});
     glm_rotate(**scene.array->TRN,glm_rad(-55.0f),(vec3){1.0f,0.0f,0.0f});
+    
     /*    MAIN_LOOP     */
     while(!glfwWindowShouldClose(_window)){
-        handle_input(_window,&cmdptr,&inputptr);
+        
+        game_Update();
+        handle_input(_window);
 
         renderer_ClearBackBuffer();
 
-        renderer_RenderScene(&scene,inputptr);
+        renderer_RenderScene(&scene,settings);
 
         glfwSwapBuffers(_window);
         glfwPollEvents();    
     }
-    
-
     
     /*    EXIT_PROG     */
     free_drawArray(&scene);

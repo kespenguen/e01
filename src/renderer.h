@@ -19,7 +19,7 @@ MATERIAL_PROPERTIES renderer_GenerateMaterial(unsigned int __shaderprogram,unsig
 
 void renderer_SetUniform(unsigned int program, const char *name,float value);
 
-void renderer_RenderScene(drawArray *__scene, GAME_INPUT *__renderproperties);
+void renderer_RenderScene(drawArray *__scene, GAME_SETTINGS *__settings);
 
 void renderer_ClearBackBuffer();
 
