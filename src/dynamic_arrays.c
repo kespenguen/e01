@@ -108,6 +108,7 @@ void free_uIntArray(uIntArray *__arr){ //FREE
 /************DYNAMIC DRAW ARRAY**************/
 void set_drawArray(drawArray *__arr, size_t __size){ //INITIALIZE
     __arr->array = malloc(__size * sizeof(drawEntitiy));
+    glm_translate_make(__arr->projection_matrix,(vec3){0.0f,0.0f,0.0f});
     __arr->used = 0;
     __arr->size = __size;
 
@@ -129,15 +130,53 @@ void copy_drawArray(drawArray *__arr, const void *__src, size_t __size){ //COPY
 
     __arr->array = malloc(__size);
 
-    memcpy(__arr->array,(float*)__src,__size);
+    memcpy(__arr->array,(drawEntitiy*)__src,__size);
 
-    __arr->used = __size / sizeof(float);
+    __arr->used = __size / sizeof(drawEntitiy);
     __arr->size = __size;
 }
 void free_drawArray(drawArray *__arr){ //FREE
 
     free(*__arr->array->TRN);
     *__arr->array->TRN = NULL;
+
+    free(__arr->array);
+
+    __arr->array = NULL;
+    __arr->used = __arr->size = 0;
+}
+
+/************DYNAMIC DRAW ARRAY**************/
+void set_CMDArray(CMD_ARRAY *__arr, size_t __size){ //INITIALIZE
+    size_t s = (sizeof(short int) + sizeof(void*));
+    printf("ss %d",(size_t)(s * __size));
+    __arr->array = malloc(s);
+    __arr->used = 0;
+    __arr->size = __size;
+
+    CMD def;
+    for(int i = 0; i < __size;++i){
+        __arr->array[i] = def;
+    }
+}
+void push_CMDArray(CMD_ARRAY *__arr, CMD *__element){ //PUSH
+
+    if (__arr->used == __arr->size) {
+      __arr->size *= 2;
+      __arr->array = realloc(__arr->array, __arr->size * sizeof(CMD));
+    }
+    __arr->array[__arr->used++] = *__element;
+}
+void copy_CMDArray(CMD_ARRAY *__arr, const void *__src, size_t __size){ //COPY
+
+    __arr->array = malloc(__size);
+
+    memcpy(__arr->array,(CMD*)__src,__size);
+
+    __arr->used = __size / sizeof(CMD);
+    __arr->size = __size;
+}
+void free_CMDArray(CMD_ARRAY *__arr){ //FREE
 
     free(__arr->array);
 

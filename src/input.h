@@ -5,22 +5,12 @@
 #define KEY_STATE_DOWN 1
 #define KEY_STATE_HELD 2
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
 #include "definitions.h"
 
-typedef struct{
-    short int Key_UP;
-    short int Key_DOWN;
-    short int Key_LEFT;
-    short int Key_RIGHT;
-    short int Key_ESCAPE;
-    short int Key_ENTER;
-    short int Key_SPACE;
-    short int Key_SHIFT;
-    
-}BINDS;
+extern short int binds[316];
 
-
-void update_binds (BINDS __binds);
-void handle_commands ();
+void input_fetch (GLFWwindow **__window);
 
 #endif

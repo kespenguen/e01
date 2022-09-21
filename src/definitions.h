@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <cglm/cglm.h>
 
+
+
 /****** GAME DEFINITONS *****/
 
 typedef struct{
@@ -19,8 +21,8 @@ typedef struct{
 }GAME_SETTINGS;
 
 typedef struct{
-    void *function;
-    int bind;
+    void (*function)();
+    short int key;
 }CMD;
 
 typedef struct{
@@ -55,6 +57,7 @@ typedef struct {
 
 typedef struct {
     drawEntitiy *array;
+    mat4 projection_matrix;
 
     size_t used;
     size_t size;

@@ -1,52 +1,24 @@
 #include "input.h"
 
-BINDS binds;
+short int binds[316] = {0};
 
-void update_binds(BINDS __binds){
-    binds = __binds;
-    handle_commands();
+void input_fetch(GLFWwindow **__window){
+    size_t index = 0;
+    //Cycle GLFW KEYS
+    for(short int i = 32; i < 348;++i){
+        switch(glfwGetKey(*__window,i)){
+            case GLFW_RELEASE:
+                binds[i] = 0;
+            break;
+            case GLFW_PRESS:
+                binds[i] = 1;
+            break;
+            case GLFW_REPEAT:
+                binds[i] = 2;
+            break;
+            default:break;
+        };
+        ++index;
+    }
 }
 
-void handle_commands (){
-    
-    switch (binds.Key_UP){
-    case KEY_STATE_UP:
-       
-    break;
-    case KEY_STATE_DOWN:
-        
-    break;
-    case KEY_STATE_HELD:
-
-    break;
-    default:break;
-    };
-
-
-    switch (binds.Key_DOWN){
-    case KEY_STATE_UP:
-        
-    break;
-    case KEY_STATE_DOWN:
-        
-    break;
-    case KEY_STATE_HELD:
-
-    break;
-    default:break;
-    };
-}
-/*    //UP ARROW
-    if(glfwGetKey(__window, GLFW_KEY_UP) == GLFW_PRESS){
-        (*__commands)->Key_UP = KEY_STATE_UP;
-    }else{
-        (*__commands)->Key_UP = KEY_STATE_DOWN;
-    }
-
-    if(glfwGetKey(__window, GLFW_KEY_DOWN) == GLFW_PRESS){
-        (*__commands)->Key_DOWN = KEY_STATE_UP;
-    }else{
-        (*__commands)->Key_DOWN = KEY_STATE_DOWN;
-    }
-
-    handle_commands(__commands,__settings);*/

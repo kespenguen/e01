@@ -10,15 +10,8 @@ int main(){
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  
-    GAME_SETTINGS defaults = game_GetDefaultSettings();
-    GAME_SETTINGS *settings = &defaults;
-
-    game_Start();
-
-
-    printf("%f",lulul.fov);
-
+      
+    game_Init();
 
     GLFWwindow* _window = glfwCreateWindow(settings->screen_width, settings->screen_height, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
     if (_window == NULL){
@@ -91,16 +84,17 @@ int main(){
 
     glm_translate(**scene.array->TRN,(vec3){-1.0f,0.0f,0.0f});
     glm_rotate(**scene.array->TRN,glm_rad(-55.0f),(vec3){1.0f,0.0f,0.0f});
+
+    renderer_UpdateProjection(&scene);
     
     /*    MAIN_LOOP     */
     while(!glfwWindowShouldClose(_window)){
         
-        game_Update();
-        handle_input(_window);
-
+        game_Update(&_window);
+        
         renderer_ClearBackBuffer();
 
-        renderer_RenderScene(&scene,settings);
+        renderer_RenderScene(&scene);
 
         glfwSwapBuffers(_window);
         glfwPollEvents();    

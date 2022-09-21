@@ -7,15 +7,12 @@
 #include "game.h"
 #include "renderer.h"
 #include "io.h"
-#include "input.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 
 
 void framebuffer_size_callback(GLFWwindow *__window, int __width, int __height);  
-
-void handle_input(GLFWwindow *__window);
 
 
 #endif

@@ -23,5 +23,10 @@ void set_drawArray(drawArray *_arr, size_t __size);
 void copy_drawArray(drawArray *_arr, const void *__src, size_t __size);
 void push_drawArray(drawArray *_arr, drawEntitiy *__element);
 void free_drawArray(drawArray *_arr);
+/*************DYNAMIC CMD ARRAY**************/
+void set_CMDArray (CMD_ARRAY *_arr, size_t __size);
+void copy_CMDArray(CMD_ARRAY *_arr, const void *__src, size_t __size);
+void push_CMDArray(CMD_ARRAY *_arr, CMD *__element);
+void free_CMDArray(CMD_ARRAY *_arr);
 
 #endif

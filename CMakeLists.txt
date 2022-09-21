@@ -20,9 +20,8 @@ add_executable(
         src/game.c
 )
 
+add_compile_options(-no-pie)
 target_link_libraries(e01 glfw GL X11 pthread Xrandr Xi dl m)
-
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

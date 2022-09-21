@@ -151,9 +151,11 @@ void renderer_UseShaderProgram(unsigned int program){
 }
 
 
+
 void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray *__indicies, 
                             unsigned int __shader, MATERIAL_PROPERTIES __texture){
 
+                                printf("xd %f\n",settings->fov);
     drawEntitiy tmp;
 
     unsigned int VBO, VAO, EBO;
@@ -204,18 +206,23 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     push_drawArray(__scene,&tmp);
 }
 
-void renderer_RenderScene(drawArray *__scene, GAME_SETTINGS *__settings){
+void renderer_UpdateProjection(drawArray *__scene){
+    float fov = settings->fov;
+    float w = (float)settings->screen_width;
+    float h = (float)settings->screen_height;
+    printf("vroom %f\n", settings->fov);
+    glm_perspective(glm_rad(fov),w / h, 0.1f,100.0f,__scene->projection_matrix);//Idealy should only be called when fov changes
+    
+}
+
+void renderer_RenderScene(drawArray *__scene){
 
     glEnable(GL_DEPTH_TEST);  
 
-    mat4 proj = GLM_MAT4_IDENTITY_INIT;
     mat4 view = GLM_MAT4_IDENTITY_INIT;
     glm_translate(view,(vec3){0.0f, 0.0f, -3.0f}); 
 
-    if(__settings->flags == RENDER_PERSPECTIVE){
-        glm_perspective(glm_rad(__settings->fov),(float)__settings->screen_width / (float)__settings->screen_height, 0.1f,100.0f,proj);
-    }
-    
+
     for(int i = 0;i < __scene->used;++i){
         //SHADER PROGRAM
         glUseProgram(__scene->array[i].PRG);
@@ -227,7 +234,7 @@ void renderer_RenderScene(drawArray *__scene, GAME_SETTINGS *__settings){
                              1, GL_FALSE, view[0]);
 
         glUniformMatrix4fv(glGetUniformLocation(__scene->array[i].PRG, "projection"),
-                             1, GL_FALSE, proj[0]);
+                             1, GL_FALSE, __scene->projection_matrix[0]);
         
         //TEXTURE
         if(__scene->array[i].MAT.type == TEXTURE_TYPE_SINGULAR){
