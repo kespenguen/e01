@@ -186,11 +186,6 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     glBindVertexArray(0);
 
 
-
-    //glm_rotate_make(*transform, glm_rad(90.0f), GLM_ZUP); /* creates rotation matrix */
-    //glm_scale_make(*transform,(vec3){0.5f, 0.5f, 0.5f});
-    //glm_scale(*transform, (vec3){0.5f, 0.5f, 0.5f});
-
     tmp.name = "NEW";
     tmp.layer = 0;
     tmp.EBO = EBO;
@@ -200,6 +195,7 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     tmp.MAT = __texture;
     tmp.IND = __indicies->size;
 
+ 
     *tmp.TRN = malloc(sizeof(mat4));
     glm_translate_make(**tmp.TRN,(vec3){1.0f,0.0f,0.0f});
 

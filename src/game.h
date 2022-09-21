@@ -6,9 +6,8 @@
 
 extern GAME_SETTINGS *settings;
 
-extern CMD_ARRAY cmds;
+//extern CMD *cmds;
 
-GAME_SETTINGS *game_GetDefaultSettings();
 
 // MAIN
 void game_Init();
@@ -19,7 +18,6 @@ void game_PhysicsUpdate();
 void game_Fov(float __fov);
 
 //GENERAL FUNCTIONS
-void game_BindCMD(void *__function, short int __key);
 
 void game_close();
 

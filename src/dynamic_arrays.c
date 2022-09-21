@@ -148,16 +148,16 @@ void free_drawArray(drawArray *__arr){ //FREE
 
 /************DYNAMIC DRAW ARRAY**************/
 void set_CMDArray(CMD_ARRAY *__arr, size_t __size){ //INITIALIZE
-    size_t s = (sizeof(short int) + sizeof(void*));
-    printf("ss %d",(size_t)(s * __size));
-    __arr->array = malloc(s);
+    //size_t s = (sizeof(short int) + sizeof(void*));
+
+    __arr->array = malloc(__size * sizeof(CMD));
     __arr->used = 0;
     __arr->size = __size;
 
-    CMD def;
-    for(int i = 0; i < __size;++i){
-        __arr->array[i] = def;
-    }
+    //CMD def;
+    //for(int i = 0; i < __size;++i){
+    //    __arr->array[i] = def;
+    //}
 }
 void push_CMDArray(CMD_ARRAY *__arr, CMD *__element){ //PUSH
 
