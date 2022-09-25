@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common/common.h"
 #include <string.h>
 
 int main(){
@@ -13,7 +13,7 @@ int main(){
       
     game_Init();
 
-    GLFWwindow* _window = glfwCreateWindow(settings->screen_width, settings->screen_height, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
+    GLFWwindow* _window = glfwCreateWindow(g_settings->screen_width, g_settings->screen_height, "(╯ ͠° ͟ʖ ͡°)╯┻━┻ ", NULL, NULL);
     if (_window == NULL){
         printf("Failed to create GLFW window");
         glfwTerminate();
@@ -28,7 +28,7 @@ int main(){
         return -1;
     }  
 
-    glViewport(0, 0, settings->screen_width, settings->screen_height);
+    glViewport(0, 0, g_settings->screen_width, g_settings->screen_height);
     glfwSetFramebufferSizeCallback(_window, framebuffer_size_callback);
 
     drawArray scene;

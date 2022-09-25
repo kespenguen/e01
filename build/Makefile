@@ -523,149 +523,149 @@ e01/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/build
 .PHONY : e01/fast
 
-src/common.o: src/common.c.o
-.PHONY : src/common.o
+src/common/common.o: src/common/common.c.o
+.PHONY : src/common/common.o
 
 # target to build an object file
-src/common.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common.c.o
-.PHONY : src/common.c.o
+src/common/common.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/common.c.o
+.PHONY : src/common/common.c.o
 
-src/common.i: src/common.c.i
-.PHONY : src/common.i
+src/common/common.i: src/common/common.c.i
+.PHONY : src/common/common.i
 
 # target to preprocess a source file
-src/common.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common.c.i
-.PHONY : src/common.c.i
+src/common/common.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/common.c.i
+.PHONY : src/common/common.c.i
 
-src/common.s: src/common.c.s
-.PHONY : src/common.s
+src/common/common.s: src/common/common.c.s
+.PHONY : src/common/common.s
 
 # target to generate assembly for a file
-src/common.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common.c.s
-.PHONY : src/common.c.s
+src/common/common.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/common.c.s
+.PHONY : src/common/common.c.s
 
-src/dynamic_arrays.o: src/dynamic_arrays.c.o
-.PHONY : src/dynamic_arrays.o
+src/common/dynamic_arrays.o: src/common/dynamic_arrays.c.o
+.PHONY : src/common/dynamic_arrays.o
 
 # target to build an object file
-src/dynamic_arrays.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/dynamic_arrays.c.o
-.PHONY : src/dynamic_arrays.c.o
+src/common/dynamic_arrays.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/dynamic_arrays.c.o
+.PHONY : src/common/dynamic_arrays.c.o
 
-src/dynamic_arrays.i: src/dynamic_arrays.c.i
-.PHONY : src/dynamic_arrays.i
+src/common/dynamic_arrays.i: src/common/dynamic_arrays.c.i
+.PHONY : src/common/dynamic_arrays.i
 
 # target to preprocess a source file
-src/dynamic_arrays.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/dynamic_arrays.c.i
-.PHONY : src/dynamic_arrays.c.i
+src/common/dynamic_arrays.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/dynamic_arrays.c.i
+.PHONY : src/common/dynamic_arrays.c.i
 
-src/dynamic_arrays.s: src/dynamic_arrays.c.s
-.PHONY : src/dynamic_arrays.s
+src/common/dynamic_arrays.s: src/common/dynamic_arrays.c.s
+.PHONY : src/common/dynamic_arrays.s
 
 # target to generate assembly for a file
-src/dynamic_arrays.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/dynamic_arrays.c.s
-.PHONY : src/dynamic_arrays.c.s
+src/common/dynamic_arrays.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/dynamic_arrays.c.s
+.PHONY : src/common/dynamic_arrays.c.s
 
-src/game.o: src/game.c.o
-.PHONY : src/game.o
+src/common/io.o: src/common/io.c.o
+.PHONY : src/common/io.o
 
 # target to build an object file
-src/game.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game.c.o
-.PHONY : src/game.c.o
+src/common/io.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/io.c.o
+.PHONY : src/common/io.c.o
 
-src/game.i: src/game.c.i
-.PHONY : src/game.i
+src/common/io.i: src/common/io.c.i
+.PHONY : src/common/io.i
 
 # target to preprocess a source file
-src/game.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game.c.i
-.PHONY : src/game.c.i
+src/common/io.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/io.c.i
+.PHONY : src/common/io.c.i
 
-src/game.s: src/game.c.s
-.PHONY : src/game.s
+src/common/io.s: src/common/io.c.s
+.PHONY : src/common/io.s
 
 # target to generate assembly for a file
-src/game.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game.c.s
-.PHONY : src/game.c.s
+src/common/io.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/common/io.c.s
+.PHONY : src/common/io.c.s
 
-src/glad.o: src/glad.c.o
-.PHONY : src/glad.o
+src/game/game.o: src/game/game.c.o
+.PHONY : src/game/game.o
 
 # target to build an object file
-src/glad.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/glad.c.o
-.PHONY : src/glad.c.o
+src/game/game.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/game.c.o
+.PHONY : src/game/game.c.o
 
-src/glad.i: src/glad.c.i
-.PHONY : src/glad.i
+src/game/game.i: src/game/game.c.i
+.PHONY : src/game/game.i
 
 # target to preprocess a source file
-src/glad.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/glad.c.i
-.PHONY : src/glad.c.i
+src/game/game.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/game.c.i
+.PHONY : src/game/game.c.i
 
-src/glad.s: src/glad.c.s
-.PHONY : src/glad.s
+src/game/game.s: src/game/game.c.s
+.PHONY : src/game/game.s
 
 # target to generate assembly for a file
-src/glad.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/glad.c.s
-.PHONY : src/glad.c.s
+src/game/game.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/game.c.s
+.PHONY : src/game/game.c.s
 
-src/input.o: src/input.c.o
-.PHONY : src/input.o
+src/game/input.o: src/game/input.c.o
+.PHONY : src/game/input.o
 
 # target to build an object file
-src/input.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/input.c.o
-.PHONY : src/input.c.o
+src/game/input.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/input.c.o
+.PHONY : src/game/input.c.o
 
-src/input.i: src/input.c.i
-.PHONY : src/input.i
+src/game/input.i: src/game/input.c.i
+.PHONY : src/game/input.i
 
 # target to preprocess a source file
-src/input.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/input.c.i
-.PHONY : src/input.c.i
+src/game/input.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/input.c.i
+.PHONY : src/game/input.c.i
 
-src/input.s: src/input.c.s
-.PHONY : src/input.s
+src/game/input.s: src/game/input.c.s
+.PHONY : src/game/input.s
 
 # target to generate assembly for a file
-src/input.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/input.c.s
-.PHONY : src/input.c.s
+src/game/input.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/input.c.s
+.PHONY : src/game/input.c.s
 
-src/io.o: src/io.c.o
-.PHONY : src/io.o
+src/game/transform.o: src/game/transform.c.o
+.PHONY : src/game/transform.o
 
 # target to build an object file
-src/io.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/io.c.o
-.PHONY : src/io.c.o
+src/game/transform.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/transform.c.o
+.PHONY : src/game/transform.c.o
 
-src/io.i: src/io.c.i
-.PHONY : src/io.i
+src/game/transform.i: src/game/transform.c.i
+.PHONY : src/game/transform.i
 
 # target to preprocess a source file
-src/io.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/io.c.i
-.PHONY : src/io.c.i
+src/game/transform.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/transform.c.i
+.PHONY : src/game/transform.c.i
 
-src/io.s: src/io.c.s
-.PHONY : src/io.s
+src/game/transform.s: src/game/transform.c.s
+.PHONY : src/game/transform.s
 
 # target to generate assembly for a file
-src/io.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/io.c.s
-.PHONY : src/io.c.s
+src/game/transform.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/game/transform.c.s
+.PHONY : src/game/transform.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -691,101 +691,101 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/renderer.o: src/renderer.c.o
-.PHONY : src/renderer.o
+src/renderer/glad.o: src/renderer/glad.c.o
+.PHONY : src/renderer/glad.o
 
 # target to build an object file
-src/renderer.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer.c.o
-.PHONY : src/renderer.c.o
+src/renderer/glad.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/glad.c.o
+.PHONY : src/renderer/glad.c.o
 
-src/renderer.i: src/renderer.c.i
-.PHONY : src/renderer.i
+src/renderer/glad.i: src/renderer/glad.c.i
+.PHONY : src/renderer/glad.i
 
 # target to preprocess a source file
-src/renderer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer.c.i
-.PHONY : src/renderer.c.i
+src/renderer/glad.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/glad.c.i
+.PHONY : src/renderer/glad.c.i
 
-src/renderer.s: src/renderer.c.s
-.PHONY : src/renderer.s
+src/renderer/glad.s: src/renderer/glad.c.s
+.PHONY : src/renderer/glad.s
 
 # target to generate assembly for a file
-src/renderer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer.c.s
-.PHONY : src/renderer.c.s
+src/renderer/glad.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/glad.c.s
+.PHONY : src/renderer/glad.c.s
 
-src/shader.o: src/shader.c.o
-.PHONY : src/shader.o
+src/renderer/renderer.o: src/renderer/renderer.c.o
+.PHONY : src/renderer/renderer.o
 
 # target to build an object file
-src/shader.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/shader.c.o
-.PHONY : src/shader.c.o
+src/renderer/renderer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/renderer.c.o
+.PHONY : src/renderer/renderer.c.o
 
-src/shader.i: src/shader.c.i
-.PHONY : src/shader.i
+src/renderer/renderer.i: src/renderer/renderer.c.i
+.PHONY : src/renderer/renderer.i
 
 # target to preprocess a source file
-src/shader.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/shader.c.i
-.PHONY : src/shader.c.i
+src/renderer/renderer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/renderer.c.i
+.PHONY : src/renderer/renderer.c.i
 
-src/shader.s: src/shader.c.s
-.PHONY : src/shader.s
+src/renderer/renderer.s: src/renderer/renderer.c.s
+.PHONY : src/renderer/renderer.s
 
 # target to generate assembly for a file
-src/shader.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/shader.c.s
-.PHONY : src/shader.c.s
+src/renderer/renderer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/renderer.c.s
+.PHONY : src/renderer/renderer.c.s
 
-src/texture.o: src/texture.c.o
-.PHONY : src/texture.o
+src/renderer/shader.o: src/renderer/shader.c.o
+.PHONY : src/renderer/shader.o
 
 # target to build an object file
-src/texture.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/texture.c.o
-.PHONY : src/texture.c.o
+src/renderer/shader.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/shader.c.o
+.PHONY : src/renderer/shader.c.o
 
-src/texture.i: src/texture.c.i
-.PHONY : src/texture.i
+src/renderer/shader.i: src/renderer/shader.c.i
+.PHONY : src/renderer/shader.i
 
 # target to preprocess a source file
-src/texture.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/texture.c.i
-.PHONY : src/texture.c.i
+src/renderer/shader.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/shader.c.i
+.PHONY : src/renderer/shader.c.i
 
-src/texture.s: src/texture.c.s
-.PHONY : src/texture.s
+src/renderer/shader.s: src/renderer/shader.c.s
+.PHONY : src/renderer/shader.s
 
 # target to generate assembly for a file
-src/texture.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/texture.c.s
-.PHONY : src/texture.c.s
+src/renderer/shader.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/shader.c.s
+.PHONY : src/renderer/shader.c.s
 
-src/transform.o: src/transform.c.o
-.PHONY : src/transform.o
+src/renderer/texture.o: src/renderer/texture.c.o
+.PHONY : src/renderer/texture.o
 
 # target to build an object file
-src/transform.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/transform.c.o
-.PHONY : src/transform.c.o
+src/renderer/texture.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/texture.c.o
+.PHONY : src/renderer/texture.c.o
 
-src/transform.i: src/transform.c.i
-.PHONY : src/transform.i
+src/renderer/texture.i: src/renderer/texture.c.i
+.PHONY : src/renderer/texture.i
 
 # target to preprocess a source file
-src/transform.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/transform.c.i
-.PHONY : src/transform.c.i
+src/renderer/texture.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/texture.c.i
+.PHONY : src/renderer/texture.c.i
 
-src/transform.s: src/transform.c.s
-.PHONY : src/transform.s
+src/renderer/texture.s: src/renderer/texture.c.s
+.PHONY : src/renderer/texture.s
 
 # target to generate assembly for a file
-src/transform.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/transform.c.s
-.PHONY : src/transform.c.s
+src/renderer/texture.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/e01.dir/build.make CMakeFiles/e01.dir/src/renderer/texture.c.s
+.PHONY : src/renderer/texture.c.s
 
 # Help Target
 help:
@@ -827,39 +827,39 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... e01"
-	@echo "... src/common.o"
-	@echo "... src/common.i"
-	@echo "... src/common.s"
-	@echo "... src/dynamic_arrays.o"
-	@echo "... src/dynamic_arrays.i"
-	@echo "... src/dynamic_arrays.s"
-	@echo "... src/game.o"
-	@echo "... src/game.i"
-	@echo "... src/game.s"
-	@echo "... src/glad.o"
-	@echo "... src/glad.i"
-	@echo "... src/glad.s"
-	@echo "... src/input.o"
-	@echo "... src/input.i"
-	@echo "... src/input.s"
-	@echo "... src/io.o"
-	@echo "... src/io.i"
-	@echo "... src/io.s"
+	@echo "... src/common/common.o"
+	@echo "... src/common/common.i"
+	@echo "... src/common/common.s"
+	@echo "... src/common/dynamic_arrays.o"
+	@echo "... src/common/dynamic_arrays.i"
+	@echo "... src/common/dynamic_arrays.s"
+	@echo "... src/common/io.o"
+	@echo "... src/common/io.i"
+	@echo "... src/common/io.s"
+	@echo "... src/game/game.o"
+	@echo "... src/game/game.i"
+	@echo "... src/game/game.s"
+	@echo "... src/game/input.o"
+	@echo "... src/game/input.i"
+	@echo "... src/game/input.s"
+	@echo "... src/game/transform.o"
+	@echo "... src/game/transform.i"
+	@echo "... src/game/transform.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/renderer.o"
-	@echo "... src/renderer.i"
-	@echo "... src/renderer.s"
-	@echo "... src/shader.o"
-	@echo "... src/shader.i"
-	@echo "... src/shader.s"
-	@echo "... src/texture.o"
-	@echo "... src/texture.i"
-	@echo "... src/texture.s"
-	@echo "... src/transform.o"
-	@echo "... src/transform.i"
-	@echo "... src/transform.s"
+	@echo "... src/renderer/glad.o"
+	@echo "... src/renderer/glad.i"
+	@echo "... src/renderer/glad.s"
+	@echo "... src/renderer/renderer.o"
+	@echo "... src/renderer/renderer.i"
+	@echo "... src/renderer/renderer.s"
+	@echo "... src/renderer/shader.o"
+	@echo "... src/renderer/shader.i"
+	@echo "... src/renderer/shader.s"
+	@echo "... src/renderer/texture.o"
+	@echo "... src/renderer/texture.i"
+	@echo "... src/renderer/texture.s"
 .PHONY : help
 
 

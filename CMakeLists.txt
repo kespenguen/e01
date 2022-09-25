@@ -8,19 +8,19 @@ enable_testing()
 add_executable(
     e01 
         src/main.c
-        src/glad.c
-        src/common.c
-        src/dynamic_arrays.c
-        src/renderer.c
-        src/io.c
-        src/input.c
-        src/texture.c
-        src/shader.c
-        src/transform.c
-        src/game.c
+        src/renderer/glad.c
+        src/common/common.c
+        src/common/dynamic_arrays.c
+        src/common/io.c
+        src/renderer/renderer.c
+        src/renderer/texture.c
+        src/renderer/shader.c
+        src/game/game.c
+        src/game/input.c
+        src/game/transform.c
 )
 
-add_compile_options(-no-pie)
+#add_compile_options(-no-pie)
 target_link_libraries(e01 glfw GL X11 pthread Xrandr Xi dl m)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

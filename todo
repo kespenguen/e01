@@ -1,5 +1,5 @@
-clean code
-make otf font importer
+clean code +
+make bitmap font importer
 make text renderer
 make simple user interface for debugging
 make colloda importer
