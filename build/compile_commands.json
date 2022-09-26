@@ -1,57 +1,57 @@
 [
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/main.c.o -c /home/od/e01/src/main.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/main.c.o -c /home/od/e01/src/main.c",
   "file": "/home/od/e01/src/main.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/renderer/glad.c.o -c /home/od/e01/src/renderer/glad.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/renderer/glad.c.o -c /home/od/e01/src/renderer/glad.c",
   "file": "/home/od/e01/src/renderer/glad.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/common/common.c.o -c /home/od/e01/src/common/common.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/common/common.c.o -c /home/od/e01/src/common/common.c",
   "file": "/home/od/e01/src/common/common.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/common/dynamic_arrays.c.o -c /home/od/e01/src/common/dynamic_arrays.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/common/dynamic_arrays.c.o -c /home/od/e01/src/common/dynamic_arrays.c",
   "file": "/home/od/e01/src/common/dynamic_arrays.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/common/io.c.o -c /home/od/e01/src/common/io.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/common/io.c.o -c /home/od/e01/src/common/io.c",
   "file": "/home/od/e01/src/common/io.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/renderer/renderer.c.o -c /home/od/e01/src/renderer/renderer.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/renderer/renderer.c.o -c /home/od/e01/src/renderer/renderer.c",
   "file": "/home/od/e01/src/renderer/renderer.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/renderer/texture.c.o -c /home/od/e01/src/renderer/texture.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/renderer/texture.c.o -c /home/od/e01/src/renderer/texture.c",
   "file": "/home/od/e01/src/renderer/texture.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/renderer/shader.c.o -c /home/od/e01/src/renderer/shader.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/renderer/shader.c.o -c /home/od/e01/src/renderer/shader.c",
   "file": "/home/od/e01/src/renderer/shader.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/game/game.c.o -c /home/od/e01/src/game/game.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/game/game.c.o -c /home/od/e01/src/game/game.c",
   "file": "/home/od/e01/src/game/game.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/game/input.c.o -c /home/od/e01/src/game/input.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/game/input.c.o -c /home/od/e01/src/game/input.c",
   "file": "/home/od/e01/src/game/input.c"
 },
 {
   "directory": "/home/od/e01/build",
-  "command": "/usr/bin/clang   -g -o CMakeFiles/e01.dir/src/game/transform.c.o -c /home/od/e01/src/game/transform.c",
+  "command": "/usr/bin/gcc -g -o CMakeFiles/e01.dir/src/game/transform.c.o -c /home/od/e01/src/game/transform.c",
   "file": "/home/od/e01/src/game/transform.c"
 }
 ]

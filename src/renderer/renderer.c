@@ -194,7 +194,7 @@ void renderer_PushGeometry(drawArray *__scene, floatArray *__verticies,uIntArray
     tmp.IND = __indicies->size;
 
  
-    *tmp.TRN = malloc(sizeof(mat4));
+    *tmp.TRN = malloc(sizeof(mat4)); //when using clang it fails to allocate memory
     glm_translate_make(**tmp.TRN,(vec3){1.0f,0.0f,0.0f});
 
     push_drawArray(__scene,&tmp);

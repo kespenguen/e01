@@ -25,7 +25,7 @@ void game_NewCommand(void (*__ptr), short int __param, short int __bind);
 //GAME FUNCTIONS
 void game_IncreaseFov();
 void game_DecreaseFov();
-void game_ChangeFov(float __fov);
-void game_close();
+void game_ChangeFov(const void *p);
+void game_Close();
 
 #endif

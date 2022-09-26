@@ -39,7 +39,7 @@ unsigned char* io_readBinary(const char *__path, size_t **__lenght){
         s = ftell(f)+1;
         fseek(f, 0, SEEK_SET);
     
-    char *tmp = NULL;
+    unsigned char *tmp = NULL;
         tmp = malloc(s *sizeof(char));
     
     fread(tmp, sizeof(char), s, f);
@@ -73,4 +73,14 @@ void io_ParseCollada(const char *__path){
 
     fclose(f); 
     
+}
+
+
+void io_ParseXML(const char *__path){
+    char *f = io_read(__path);
+
+
+
+    free(f);
+    f = NULL;
 }

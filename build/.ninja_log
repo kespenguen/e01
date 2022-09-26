@@ -1,0 +1,25 @@
+# ninja log v5
+3	176	1664213659730213883	CMakeFiles/e01.dir/src/common/io.c.o	bdfc4a2d21fd9d4b
+2	340	1664213659893547215	CMakeFiles/e01.dir/src/main.c.o	61ec2349dd1c9869
+10	138	1664213659693547216	CMakeFiles/e01.dir/src/renderer/texture.c.o	e77a498ac0293df6
+138	500	1664213660050213881	CMakeFiles/e01.dir/src/game/transform.c.o	50257bd845bf0f1e
+27	422	1664213659976880549	CMakeFiles/e01.dir/src/game/game.c.o	66cc1b1258211dbd
+1	176	1664213693726880375	CMakeFiles/e01.dir/src/renderer/renderer.c.o	b6da24deb2cf4b18
+33	409	1664213659963547215	CMakeFiles/e01.dir/src/game/input.c.o	816d57617a0afbaf
+3	426	1664213659980213881	CMakeFiles/e01.dir/src/common/dynamic_arrays.c.o	f7c32f5f958e6203
+15	400	1664213659946880548	CMakeFiles/e01.dir/src/renderer/shader.c.o	70fdcb1448e1bb96
+3	404	1664213659953547215	CMakeFiles/e01.dir/src/renderer/glad.c.o	81d72ae8bf265724
+3	423	1664213659976880549	CMakeFiles/e01.dir/src/common/common.c.o	250a1f3fd11786e1
+176	234	1664213693786880375	/home/od/e01/e01	37cc16d236ead88f
+2	70	1664213748156880099	CMakeFiles/e01.dir/src/common/io.c.o	19eda8df24a48d5
+3	125	1664213748210213432	CMakeFiles/e01.dir/src/renderer/texture.c.o	fa3eb84b01cfe58e
+3	236	1664213748316880099	CMakeFiles/e01.dir/src/renderer/renderer.c.o	2e735b84b7be909d
+9	239	1664213748323546765	CMakeFiles/e01.dir/src/game/input.c.o	3fe1af8bbfc47909
+2	258	1664213748340213432	CMakeFiles/e01.dir/src/common/dynamic_arrays.c.o	7c2a7dc9574c1b68
+2	264	1664213748350213432	CMakeFiles/e01.dir/src/common/common.c.o	c769fdf840a0c3af
+7	287	1664213748370213432	CMakeFiles/e01.dir/src/game/game.c.o	b1d060afcf95b6ec
+71	301	1664213748386880098	CMakeFiles/e01.dir/src/game/transform.c.o	aa2de13acaede4d
+3	309	1664213748393546765	CMakeFiles/e01.dir/src/renderer/shader.c.o	171ebb00075c347f
+1	310	1664213748393546765	CMakeFiles/e01.dir/src/main.c.o	976a29089591ac1d
+1	359	1664213748443546764	CMakeFiles/e01.dir/src/renderer/glad.c.o	9235ad11c84ec780
+359	427	1664213748510213431	/home/od/e01/e01	5ae4f3d3035ae860

@@ -26,7 +26,7 @@ typedef struct{
 #define CMD_PARAM_PTR        5
 
 typedef struct{
-    void (*function)();
+    void (*function)(const void *p);
     short int param;
     short int key;
 }CMD;
