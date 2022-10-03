@@ -5,6 +5,22 @@
 #include <cglm/cglm.h>
 
 
+/****** I/O DEFINITIONS *****/
+
+typedef struct{
+    char name[128];
+    char *value;
+    size_t value_size;
+}XML_ATTRIB;
+
+typedef struct {
+    struct XML_TAG *parrent;
+    XML_ATTRIB *attrib;
+    size_t attrib_size;
+    
+    char tagname[128];
+}XML_TAG;
+
 /****** GAME DEFINITONS *****/
 
 typedef struct{
